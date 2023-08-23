@@ -6,9 +6,17 @@
   font-family: monospace;
 }
 
-.game-container {
+#snake-container {
+  position: relative;
   width: 200px;
   height: 200px;
-  margin: 200px auto;
+  margin: 10px auto;
   background: rgba(245, 245, 245, 0.43);
+}
+
+#score-display {
+  text-align: center;
+  position: relative;
+  margin: 150px auto 0;
+  color: antiquewhite;
 }
