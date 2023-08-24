@@ -1,6 +1,6 @@
 const interval = 150;
-const elementWidth = 10;
-const gameContainerElements = 25;
+const elementWidth = 15;
+const gameContainerElements = 50;
 let direction = [0, 1];
 let snakeBody = [
   [12, 12],
@@ -64,9 +64,9 @@ function colision() {
     }
   }
   if (
-    snakeBody[0][0] > 24 ||
+    snakeBody[0][0] > gameContainerElements - 1 ||
     snakeBody[0][0] < 0 ||
-    snakeBody[0][1] > 24 ||
+    snakeBody[0][1] > gameContainerElements - 1 ||
     snakeBody[0][1] < 0
   ) {
     resetGame();
@@ -125,8 +125,8 @@ function paint() {
 
 function foodFunc() {
   if (food[2] === 0) {
-    food[0] = Math.floor(Math.random() * 25);
-    food[1] = Math.floor(Math.random() * 25);
+    food[0] = Math.floor(Math.random() * gameContainerElements);
+    food[1] = Math.floor(Math.random() * gameContainerElements);
     food[2] = 1;
   }
 }
