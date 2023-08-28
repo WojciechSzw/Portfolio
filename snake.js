@@ -1,6 +1,7 @@
-const interval = 50; //GAME_TICK//f2 edit all
-const elementWidth = 15;
-const gameContainerElements = 50;
+const GAME_TICK = 200;
+const GAME_CONTAINER_SIDEWIDTH = 50;
+const PIXEL_WIDTH = 15;
+
 let direction = [0, 1];
 const initialSnakeBody = [
   [12, 12],
@@ -14,14 +15,14 @@ let snakeBody = [
   [12, 10],
   [12, 9],
 ];
-let food = [5, 5, 0];
+let food = [5, 5, 0]; // [x,y,(0-eaten,1-not)]
 let score = 0;
 
 const container = document.getElementById("snake-container");
-container.style.width = gameContainerElements * elementWidth + "px";
-container.style.height = gameContainerElements * elementWidth + "px";
+container.style.width = GAME_CONTAINER_SIDEWIDTH * PIXEL_WIDTH + "px";
+container.style.height = GAME_CONTAINER_SIDEWIDTH * PIXEL_WIDTH + "px";
 
-setInterval(main, interval);
+setInterval(main, GAME_TICK);
 
 let isDirectionChosen = false;
 
@@ -73,7 +74,7 @@ function main() {
 
 function collision() {
   for (let x = 3; x < snakeBody.length; x++) {
-    //napisz 3 co to za gówno
+    //3 is the first index of snakeBody that can be eaten by the head.
     if (
       snakeBody[0][0] === snakeBody[x][0] &&
       snakeBody[0][1] === snakeBody[x][1]
@@ -82,9 +83,9 @@ function collision() {
     }
   }
   if (
-    snakeBody[0][0] > gameContainerElements - 1 ||
+    snakeBody[0][0] > GAME_CONTAINER_SIDEWIDTH - 1 ||
     snakeBody[0][0] < 0 ||
-    snakeBody[0][1] > gameContainerElements - 1 ||
+    snakeBody[0][1] > GAME_CONTAINER_SIDEWIDTH - 1 ||
     snakeBody[0][1] < 0
   ) {
     resetGame();
@@ -99,7 +100,7 @@ function updateBody() {
   snakeBody.pop();
 
   if (snakeBody[0][0] === food[0] && snakeBody[0][1] === food[1]) {
-    food[2] = 0; //index czy jedzenie zostało zjedzone i musi na nowo zostać zRNGowane
+    food[2] = 0;
     snakeBody.unshift([snakeBody[0][0], snakeBody[0][1]]);
     score++;
   }
@@ -119,11 +120,11 @@ function paint() {
 
     snakePart.id = "snake" + x;
     snakePart.style.position = "absolute";
-    snakePart.style.width = elementWidth + "px";
-    snakePart.style.height = elementWidth + "px";
+    snakePart.style.width = PIXEL_WIDTH + "px";
+    snakePart.style.height = PIXEL_WIDTH + "px";
     snakePart.style.background = "red";
-    snakePart.style.bottom = snakeBody[x][1] * elementWidth + "px";
-    snakePart.style.left = snakeBody[x][0] * elementWidth + "px";
+    snakePart.style.bottom = snakeBody[x][1] * PIXEL_WIDTH + "px";
+    snakePart.style.left = snakeBody[x][0] * PIXEL_WIDTH + "px";
 
     container.appendChild(snakePart);
   }
@@ -131,11 +132,11 @@ function paint() {
   const foodPart = document.createElement("div");
   foodPart.id = "foody";
   foodPart.style.position = "absolute";
-  foodPart.style.width = elementWidth + "px";
-  foodPart.style.height = elementWidth + "px";
+  foodPart.style.width = PIXEL_WIDTH + "px";
+  foodPart.style.height = PIXEL_WIDTH + "px";
   foodPart.style.background = "green";
-  foodPart.style.left = food[0] * elementWidth + "px";
-  foodPart.style.bottom = food[1] * elementWidth + "px";
+  foodPart.style.left = food[0] * PIXEL_WIDTH + "px";
+  foodPart.style.bottom = food[1] * PIXEL_WIDTH + "px";
   container.appendChild(foodPart);
 
   document.getElementById("score-display").innerText = "wynik: " + score;
@@ -143,8 +144,8 @@ function paint() {
 
 function foodFunc() {
   if (food[2] === 0) {
-    food[0] = Math.floor(Math.random() * gameContainerElements);
-    food[1] = Math.floor(Math.random() * gameContainerElements);
+    food[0] = Math.floor(Math.random() * GAME_CONTAINER_SIDEWIDTH);
+    food[1] = Math.floor(Math.random() * GAME_CONTAINER_SIDEWIDTH);
     food[2] = 1;
   }
 }
