@@ -1,24 +1,24 @@
-const GAME_TICK = 200;
-const GAME_CONTAINER_SIDEWIDTH = 50;
-const PIXEL_WIDTH = 15;
+const GAME_TICK: number = 200;
+const GAME_CONTAINER_SIDEWIDTH: number = 30;
+const PIXEL_WIDTH: number = 15;
 
-let direction = [0, 1];
-const initialSnakeBody = [
+let direction: number[] = [0, 1];
+const initialSnakeBody: number[][] = [
   [12, 12],
   [12, 11],
   [12, 10],
   [12, 9],
 ];
-let snakeBody = [
+let snakeBody: number[][] = [
   [12, 12],
   [12, 11],
   [12, 10],
-  [12, 9],
+  [12, 7],
 ];
-let food = [5, 5, 0]; // [x,y,(0-eaten,1-not)]
-let score = 0;
+let food: number[] = [5, 5, 0]; // [x,y,(0-eaten,1-not)]
+let score: number = 0;
 
-const container = document.getElementById("snake-container");
+const container = document.getElementById("snake-container")!;
 container.style.width = GAME_CONTAINER_SIDEWIDTH * PIXEL_WIDTH + "px";
 container.style.height = GAME_CONTAINER_SIDEWIDTH * PIXEL_WIDTH + "px";
 
@@ -139,7 +139,7 @@ function paint() {
   foodPart.style.bottom = food[1] * PIXEL_WIDTH + "px";
   container.appendChild(foodPart);
 
-  document.getElementById("score-display").innerText = "wynik: " + score;
+  document.getElementById("score-display")!.innerText = "wynik: " + score;
 }
 
 function foodFunc() {
