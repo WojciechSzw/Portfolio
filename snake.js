@@ -18,8 +18,13 @@ let snakeBody = [
 let food = [5, 5, 0]; // [x,y,(0-eaten,1-not)]
 let score = 0;
 const container = document.getElementById("snake-container");
-container.style.width = GAME_CONTAINER_SIDEWIDTH * PIXEL_WIDTH + "px";
-container.style.height = GAME_CONTAINER_SIDEWIDTH * PIXEL_WIDTH + "px";
+if (container !== null) {
+    container.style.width = GAME_CONTAINER_SIDEWIDTH * PIXEL_WIDTH + "px";
+    container.style.height = GAME_CONTAINER_SIDEWIDTH * PIXEL_WIDTH + "px";
+}
+else {
+    console.log("null");
+}
 setInterval(main, GAME_TICK);
 let isDirectionChosen = false;
 function main() {
@@ -96,10 +101,15 @@ function updateBody() {
     }
 }
 function eraseOld() {
-    let child = container.firstElementChild;
-    while (child) {
-        container.removeChild(child);
-        child = container.firstElementChild;
+    if (container !== null) {
+        let child = container.firstElementChild;
+        while (child) {
+            container.removeChild(child);
+            child = container.firstElementChild;
+        }
+    }
+    else {
+        console.log("null");
     }
 }
 function paint() {
@@ -112,7 +122,12 @@ function paint() {
         snakePart.style.background = "red";
         snakePart.style.bottom = snakeBody[x][1] * PIXEL_WIDTH + "px";
         snakePart.style.left = snakeBody[x][0] * PIXEL_WIDTH + "px";
-        container.appendChild(snakePart);
+        if (container !== null) {
+            container.appendChild(snakePart);
+        }
+        else {
+            console.log("null");
+        }
     }
     const foodPart = document.createElement("div");
     foodPart.id = "foody";
@@ -122,7 +137,12 @@ function paint() {
     foodPart.style.background = "green";
     foodPart.style.left = food[0] * PIXEL_WIDTH + "px";
     foodPart.style.bottom = food[1] * PIXEL_WIDTH + "px";
-    container.appendChild(foodPart);
+    if (container !== null) {
+        container.appendChild(foodPart);
+    }
+    else {
+        console.log("null");
+    }
     document.getElementById("score-display").innerText = "wynik: " + score;
 }
 function foodFunc() {
@@ -138,4 +158,3 @@ function resetGame() {
     direction = [0, 1];
     alert("kolizja");
 }
-//# sourceMappingURL=snake.js.map
