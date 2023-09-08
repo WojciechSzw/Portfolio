@@ -3,54 +3,56 @@ const pagesCount: number = 3;
 let wheeling: boolean = false;
 const mainContainer = document.getElementById("main");
 const navbarLink = document.getElementsByClassName("navbar-link");
+let timeoutID: number = -1;
+let TouchpadFix: number = 0;
 
 window.addEventListener("wheel", ScrollFullPage);
 
 function ScrollFullPage(event: WheelEvent) {
   if (!wheeling) {
-    deleteNavbarChosen(); //deleting every underline under navbar-link
-
+    wheeling = true;
+    timeoutID = -1;
+    TouchpadFix = 0;
     if (event.deltaY > 0 && pageActual < pagesCount - 1) {
-      wheeling = true;
-      navbarLink[pageActual + 1].classList.add("navbar-chosen"); //adding underline
-      mainContainer?.children[pageActual + 1]?.scrollIntoView({
-        behavior: "smooth",
-      }); //going to another page
-      pageActual++;
-      window.setTimeout(() => (wheeling = false), 800); //sec break from scrolling
+      goTo(pageActual + 1);
     } else if (event.deltaY < 0 && pageActual > 0) {
-      wheeling = true;
-      navbarLink[pageActual - 1].classList.add("navbar-chosen"); //adding underline
-      mainContainer?.children[pageActual - 1]?.scrollIntoView({
-        behavior: "smooth",
-      }); //going to another page
-      pageActual--;
-      window.setTimeout(() => (wheeling = false), 800); //sec break from scrolling
+      goTo(pageActual - 1);
     }
-    console.log(pageActual);
   }
+
+  if (timeoutID === -1) {
+    console.log("timer");
+    timeoutID = window.setTimeout(() => (wheeling = false), 400);
+  } //if someone started scrolling to other page
+  else if (TouchpadFix < 200) {
+    TouchpadFix++;
+    console.log("timer 50");
+    clearTimeout(timeoutID);
+    timeoutID = window.setTimeout(() => (wheeling = false), 400);
+  } //if someone is still scrolling, the timer resets
 }
 
-function goTo(pageName: string) {
+function goTo(pageName: number) {
   deleteNavbarChosen();
   switch (pageName) {
-    case "about":
+    case 0:
       navbarLink[0].classList.add("navbar-chosen");
       mainContainer?.children[0]?.scrollIntoView({ behavior: "smooth" });
       pageActual = 0;
       break;
-    case "projects":
+    case 1:
       navbarLink[1].classList.add("navbar-chosen");
       mainContainer?.children[1]?.scrollIntoView({ behavior: "smooth" });
       pageActual = 1;
       break;
-    case "contact":
+    case 2:
       navbarLink[2].classList.add("navbar-chosen");
       mainContainer?.children[2]?.scrollIntoView({ behavior: "smooth" });
       pageActual = 2;
       break;
     default:
   }
+  console.log(pageActual);
 }
 
 //deletes navbar-chosen class (underline) from every element

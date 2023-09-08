@@ -17,18 +17,32 @@
     <nav class="navbar">
       <a href="">Wojciech<b>Szwarc</b></a>
       <div>
-        <a class="navbar-link navbar-chosen" onclick="goTo('about')">about</a>
-        <a class="navbar-link" onclick="goTo('projects')">projects</a>
-        <a class="navbar-link" onclick="goTo('contact')">contact</a>
+        <a class="navbar-link navbar-chosen" onclick="goTo(0)">about</a>
+        <a class="navbar-link" onclick="goTo(1)">projects</a>
+        <a class="navbar-link" onclick="goTo(2)">contact</a>
         <i class="fa-brands fa-square-github fa-xl"></i>
         <i class="fa-brands fa-linkedin fa-xl"></i>
       </div>
     </nav>
     <div id="main">
       <section id="about">o mnie</section>
-      <section id="projects">portfolio</section>
+      <section id="projects">
+        <h2>My projects</h2>
+        <div id="projects-scroll-container">
+          <div>
+            <img src="" alt="" />
+            <h3></h3>
+            <p></p>
+          </div>
+        </div>
+      </section>
       <section id="contact">kontakt</section>
     </div>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
     <script src="index.js"></script>
   </body>
 </html>
