@@ -18,6 +18,7 @@ function ScrollFullPage(event) {
         else if (event.deltaY < 0 && pageActual > 0) {
             goTo(pageActual - 1);
         }
+        // timeoutID = window.setTimeout(() => (wheeling = false), 1000);
     }
     if (timeoutID === -1) {
         console.log("timer");

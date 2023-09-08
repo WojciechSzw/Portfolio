@@ -3,7 +3,7 @@
   padding: 0;
   border: none;
   text-decoration: none;
-  font-family: monospace;
+  font-family: Roboto Condensed;
 }
 
 .background {
@@ -51,8 +51,7 @@
   border-bottom: solid 1px rgba(250, 235, 215, 0);
   margin-top: 1px;
 }
-
-.navbar-link:hover {
+.navbar-link :hover {
   cursor: pointer;
   border-bottom: solid 1px rgb(250, 235, 215);
   margin-top: 1px;
@@ -83,6 +82,7 @@
 #main section {
   height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -93,5 +93,29 @@
   background-color: rgb(43, 60, 60);
 }
 #main section:nth-child(3) {
-  background-color: rgb(57, 50, 42);
+  background-color: rgb(36, 18, 54);
+}
+
+#projects h2 {
+  font-weight: 400;
+  font-size: clamp(20px, 6vh, 60px);
+  color: antiquewhite;
+  margin-bottom: clamp(15px, 2%, 30px);
+}
+#projects #projects-scroll-container {
+  height: clamp(100px, 80%, 500px);
+  width: 90%;
+  background-color: rgb(62, 61, 61);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+#projects #projects-scroll-container .project-scroll-item {
+  height: 80%;
+}
+#projects #projects-scroll-container .project-scroll-item img {
+  max-height: 90%;
+  width: auto;
 }/*# sourceMappingURL=index.css.map */
