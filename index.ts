@@ -18,19 +18,19 @@ function ScrollFullPage(event: WheelEvent) {
     } else if (event.deltaY < 0 && pageActual > 0) {
       goTo(pageActual - 1);
     }
-    // timeoutID = window.setTimeout(() => (wheeling = false), 1000);
+    timeoutID = window.setTimeout(() => (wheeling = false), 1000);
   }
 
-  if (timeoutID === -1) {
-    console.log("timer");
-    timeoutID = window.setTimeout(() => (wheeling = false), 400);
-  } //if someone started scrolling to other page
-  else if (TouchpadFix < 200) {
-    TouchpadFix++;
-    console.log("timer 50");
-    clearTimeout(timeoutID);
-    timeoutID = window.setTimeout(() => (wheeling = false), 400);
-  } //if someone is still scrolling, the timer resets
+  // if (timeoutID === -1) {
+  //   console.log("timer");
+  //   timeoutID = window.setTimeout(() => (wheeling = false), 400);
+  // } //if someone started scrolling to other page
+  // else if (TouchpadFix < 170) {
+  //   TouchpadFix++;
+  //   console.log("timer 50");
+  //   clearTimeout(timeoutID);
+  //   timeoutID = window.setTimeout(() => (wheeling = false), 60);
+  // } //if someone is still scrolling, the timer resets
 }
 
 function goTo(pageName: number) {

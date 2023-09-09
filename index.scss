@@ -3,7 +3,7 @@
   padding: 0;
   border: none;
   text-decoration: none;
-  font-family: Roboto Condensed;
+  font-family: Roboto;
 }
 
 .background {
@@ -66,10 +66,10 @@
   margin-right: 10px;
   color: antiquewhite;
   transition: all 20ms ease-out;
+  cursor: pointer;
 }
 
 .navbar > div > i:hover {
-  cursor: pointer;
   transform: scale(1.1);
 }
 
@@ -108,20 +108,29 @@
   }
   #projects-scroll-container {
     height: clamp(100px, 80%, 500px);
-    width: 90%;
+    width: 100%;
     background-color: rgb(62, 61, 61);
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    flex-flow: row;
+
+    overflow-x: auto;
     gap: 20px;
     .project-scroll-item {
-      height: 80%;
+      height: 400px;
+      width: 400px;
+      display: flex;
+      justify-content: start;
+      flex-direction: column;
+      align-items: center;
       img {
-        max-height: 90%;
-        width: auto;
+        max-height: 75%;
+        width: 75%;
       }
       h3 {
+        color: antiquewhite;
+        font-weight: 200;
+        text-align: center;
+        margin: 5px 5%;
       }
     }
   }
