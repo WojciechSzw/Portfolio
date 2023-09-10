@@ -32,26 +32,11 @@ function ScrollFullPage(event) {
     // } //if someone is still scrolling, the timer resets
 }
 function goTo(pageName) {
-    var _a, _b, _c;
+    var _a;
     deleteNavbarChosen();
-    switch (pageName) {
-        case 0:
-            navbarLink[0].classList.add("navbar-chosen");
-            (_a = mainContainer === null || mainContainer === void 0 ? void 0 : mainContainer.children[0]) === null || _a === void 0 ? void 0 : _a.scrollIntoView({ behavior: "smooth" });
-            pageActual = 0;
-            break;
-        case 1:
-            navbarLink[1].classList.add("navbar-chosen");
-            (_b = mainContainer === null || mainContainer === void 0 ? void 0 : mainContainer.children[1]) === null || _b === void 0 ? void 0 : _b.scrollIntoView({ behavior: "smooth" });
-            pageActual = 1;
-            break;
-        case 2:
-            navbarLink[2].classList.add("navbar-chosen");
-            (_c = mainContainer === null || mainContainer === void 0 ? void 0 : mainContainer.children[2]) === null || _c === void 0 ? void 0 : _c.scrollIntoView({ behavior: "smooth" });
-            pageActual = 2;
-            break;
-        default:
-    }
+    navbarLink[pageName].classList.add("navbar-chosen");
+    (_a = mainContainer === null || mainContainer === void 0 ? void 0 : mainContainer.children[pageName]) === null || _a === void 0 ? void 0 : _a.scrollIntoView({ behavior: "smooth" });
+    pageActual = pageName;
     console.log(pageActual);
 }
 //deletes navbar-chosen class (underline) from every element
@@ -61,3 +46,25 @@ function deleteNavbarChosen() {
             .getElementsByClassName("navbar-link")[x].classList.remove("navbar-chosen");
     }
 }
+function goToPage(page) {
+    window.location = page;
+}
+window.onload = (a) => {
+    goTo(0);
+    const parents = document.getElementsByClassName("project-scroll-item-title");
+    Array.from(parents).forEach((div) => {
+        const title = div.children[0];
+        const wholeText = title.innerHTML;
+        Array.from(wholeText).forEach((letter) => {
+            if (letter !== " ") {
+                div.insertAdjacentHTML("beforeend", "<h3>" + letter + "</h3>");
+            }
+            else {
+                div.insertAdjacentHTML("beforeend", "<h3>" + " " + "</h3>");
+                div.insertAdjacentHTML("beforeend", "<h3>" + " " + "</h3>");
+                div.insertAdjacentHTML("beforeend", "<h3>" + " " + "</h3>");
+            }
+        });
+        title.remove();
+    });
+};

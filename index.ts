@@ -35,24 +35,9 @@ function ScrollFullPage(event: WheelEvent) {
 
 function goTo(pageName: number) {
   deleteNavbarChosen();
-  switch (pageName) {
-    case 0:
-      navbarLink[0].classList.add("navbar-chosen");
-      mainContainer?.children[0]?.scrollIntoView({ behavior: "smooth" });
-      pageActual = 0;
-      break;
-    case 1:
-      navbarLink[1].classList.add("navbar-chosen");
-      mainContainer?.children[1]?.scrollIntoView({ behavior: "smooth" });
-      pageActual = 1;
-      break;
-    case 2:
-      navbarLink[2].classList.add("navbar-chosen");
-      mainContainer?.children[2]?.scrollIntoView({ behavior: "smooth" });
-      pageActual = 2;
-      break;
-    default:
-  }
+  navbarLink[pageName].classList.add("navbar-chosen");
+  mainContainer?.children[pageName]?.scrollIntoView({ behavior: "smooth" });
+  pageActual = pageName;
   console.log(pageActual);
 }
 
@@ -68,3 +53,26 @@ function deleteNavbarChosen() {
       [x].classList.remove("navbar-chosen");
   }
 }
+
+function goToPage(page: Location) {
+  window.location = page;
+}
+
+window.onload = (a) => {
+  goTo(0);
+  const parents = document.getElementsByClassName("project-scroll-item-title");
+  Array.from(parents).forEach((div) => {
+    const title = div.children[0];
+    const wholeText = title.innerHTML;
+    Array.from(wholeText).forEach((letter) => {
+      if (letter !== " ") {
+        div.insertAdjacentHTML("beforeend", "<h3>" + letter + "</h3>");
+      } else {
+        div.insertAdjacentHTML("beforeend", "<h3>" + " " + "</h3>");
+        div.insertAdjacentHTML("beforeend", "<h3>" + " " + "</h3>");
+        div.insertAdjacentHTML("beforeend", "<h3>" + " " + "</h3>");
+      }
+    });
+    title.remove();
+  });
+};

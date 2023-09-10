@@ -23,7 +23,7 @@
   </head>
   <body class="background">
     <nav class="navbar">
-      <a href="">Wojciech<b>Szwarc</b></a>
+      <a href="index.html">Wojciech<b>Szwarc</b></a>
       <div>
         <a class="navbar-link navbar-chosen" onclick="goTo(0)">about</a>
         <a class="navbar-link" onclick="goTo(1)">projects</a>
@@ -37,29 +37,28 @@
       <section id="projects">
         <h2>My projects</h2>
         <div id="projects-scroll-container">
-          <div class="project-scroll-item">
+          <div class="project-scroll-item" id="cfxpage-project">
+            <div class="project-scroll-item-title">
+              <h3>Cfx lab page</h3>
+            </div>
             <img src="images/cfxpage.jpg" alt="cfximage" />
-            <h3>Strona internetowa zakładu usług technik dentystycznych</h3>
           </div>
-          <div class="project-scroll-item">
-            <img src="images/cfxpage.jpg" alt="cfximage" />
-            <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
+          <div
+            class="project-scroll-item"
+            id="snake-page"
+            onclick="goToPage('snake.html')"
+          >
+            <div class="project-scroll-item-title">
+              <h3>Snake game</h3>
+            </div>
+
+            <img src="images/snakegame.jpg" alt="cfximage" />
           </div>
-          <div class="project-scroll-item">
+          <div class="project-scroll-item" id="pong-project">
+            <div class="project-scroll-item-title">
+              <h3>Lorem, ipsum dolor.</h3>
+            </div>
             <img src="images/cfxpage.jpg" alt="cfximage" />
-            <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
-          </div>
-          <div class="project-scroll-item">
-            <img src="images/cfxpage.jpg" alt="cfximage" />
-            <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
-          </div>
-          <div class="project-scroll-item">
-            <img src="images/cfxpage.jpg" alt="cfximage" />
-            <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
-          </div>
-          <div class="project-scroll-item">
-            <img src="images/cfxpage.jpg" alt="cfximage" />
-            <h3>Lorem ipsum dolor sit amet consectetur adipisicing.</h3>
           </div>
         </div>
       </section>
