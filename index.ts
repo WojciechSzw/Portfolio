@@ -1,44 +1,30 @@
-let pageActual: number = 0;
-const pagesCount: number = 3;
-let wheeling: boolean = false;
+let pageActual = 0;
+let wheeling = false;
 const mainContainer = document.getElementById("main");
 const navbarLink = document.getElementsByClassName("navbar-link");
-let timeoutID: number = -1;
-let TouchpadFix: number = 0;
+const pagesCount = mainContainer?.children.length ?? 0;
+let timeoutID = -1;
 
 window.addEventListener("wheel", ScrollFullPage);
 
 function ScrollFullPage(event: WheelEvent) {
-  if (!wheeling) {
-    wheeling = true;
-    timeoutID = -1;
-    TouchpadFix = 0;
-    if (event.deltaY > 0 && pageActual < pagesCount - 1) {
-      goTo(pageActual + 1);
-    } else if (event.deltaY < 0 && pageActual > 0) {
-      goTo(pageActual - 1);
-    }
-    timeoutID = window.setTimeout(() => (wheeling = false), 1000);
+  if (wheeling || Math.abs(event.deltaY) < 30) return;
+  wheeling = true;
+  timeoutID = -1;
+  if (event.deltaY > 0 && pageActual < pagesCount - 1) {
+    goTo(pageActual + 1);
+  } else if (event.deltaY < 0 && pageActual > 0) {
+    goTo(pageActual - 1);
   }
-
-  // if (timeoutID === -1) {
-  //   console.log("timer");
-  //   timeoutID = window.setTimeout(() => (wheeling = false), 400);
-  // } //if someone started scrolling to other page
-  // else if (TouchpadFix < 170) {
-  //   TouchpadFix++;
-  //   console.log("timer 50");
-  //   clearTimeout(timeoutID);
-  //   timeoutID = window.setTimeout(() => (wheeling = false), 60);
-  // } //if someone is still scrolling, the timer resets
+  timeoutID = window.setTimeout(() => (wheeling = false), 600);
 }
 
-function goTo(pageName: number) {
+function goTo(pageIndex: number) {
   deleteNavbarChosen();
-  navbarLink[pageName].classList.add("navbar-chosen");
-  mainContainer?.children[pageName]?.scrollIntoView({ behavior: "smooth" });
-  pageActual = pageName;
-  console.log(pageActual);
+  navbarLink[pageIndex].classList.add("navbar-chosen");
+  mainContainer?.children[pageIndex]?.scrollIntoView({ behavior: "smooth" });
+  pageActual = pageIndex;
+  // console.log(pageActual);
 }
 
 //deletes navbar-chosen class (underline) from every element
@@ -59,8 +45,12 @@ function goToPage(page: Location) {
 }
 
 window.onload = (a) => {
+  //always go to first page on reload
   goTo(0);
-  const parents = document.getElementsByClassName("project-scroll-item-title");
+  //Making title vertical and spaced evenly
+  const parents = document.getElementsByClassName(
+    "projects__scroll-box__item__title"
+  );
   Array.from(parents).forEach((div) => {
     const title = div.children[0];
     const wholeText = title.innerHTML;
@@ -75,4 +65,38 @@ window.onload = (a) => {
     });
     title.remove();
   });
+  makeScrollItemsSquare();
+};
+
+function goToActualPage() {
+  goTo(pageActual);
+}
+
+function makeScrollItemsSquare() {
+  const scrollItems = document.querySelectorAll<HTMLElement>(
+    ".projects__scroll-box__item"
+  );
+  Array.from(scrollItems).forEach((item) => {
+    item.style.width = item.offsetHeight + "px";
+    item.style.minWidth = item.offsetHeight + "px";
+  });
+
+  const middleItemTitle = document.querySelectorAll<HTMLElement>(
+    ".projects__scroll-box__item__title"
+  );
+  const scrollBox = document.querySelector<HTMLElement>(
+    ".projects__scroll-box"
+  );
+
+  scrollBox!.style.marginRight = middleItemTitle[0].offsetWidth * 1.2 + "px";
+}
+
+window.addEventListener("resize", () => {
+  goToActualPage();
+  makeScrollItemsSquare();
+});
+
+window.onunload = () => {
+  window.removeEventListener("resize", goToActualPage);
+  window.removeEventListener("wheel", ScrollFullPage);
 };

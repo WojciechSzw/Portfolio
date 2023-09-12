@@ -1,22 +1,22 @@
-const GAME_TICK: number = 200;
-const GAME_CONTAINER_SIDEWIDTH: number = 30;
-const PIXEL_WIDTH: number = 15;
+const GAME_TICK = 200;
+const GAME_CONTAINER_SIDEWIDTH = 30;
+const PIXEL_WIDTH = 15;
 
-let direction: number[] = [0, 1];
-const initialSnakeBody: number[][] = [
+let direction = [0, 1];
+const initialSnakeBody = [
   [12, 12],
   [12, 11],
   [12, 10],
   [12, 9],
 ];
-let snakeBody: number[][] = [
+let snakeBody = [
   [12, 12],
   [12, 11],
   [12, 10],
   [12, 7],
 ];
-let food: number[] = [5, 5, 0]; // [x,y,(0-eaten,1-not)]
-let score: number = 0;
+let food = [5, 5, 0]; // [x,y,(0-eaten,1-not)]
+let score = 0;
 
 const container = document.getElementById("snake-container");
 if (container !== null) {

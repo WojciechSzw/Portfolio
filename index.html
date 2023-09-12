@@ -21,7 +21,7 @@
     />
     <link rel="stylesheet" href="index.css" />
   </head>
-  <body class="background">
+  <body>
     <nav class="navbar">
       <a href="index.html">Wojciech<b>Szwarc</b></a>
       <div>
@@ -34,29 +34,29 @@
     </nav>
     <div id="main">
       <section id="about">o mnie</section>
-      <section id="projects">
-        <h2>My projects</h2>
-        <div id="projects-scroll-container">
-          <div class="project-scroll-item" id="cfxpage-project">
-            <div class="project-scroll-item-title">
+      <section class="projects" id="projects">
+        <h2 class="projects__title">My projects</h2>
+        <div class="projects__scroll-box">
+          <div class="projects__scroll-box__item" id="cfxpage-project">
+            <div class="projects__scroll-box__item__title">
               <h3>Cfx lab page</h3>
             </div>
             <img src="images/cfxpage.jpg" alt="cfximage" />
           </div>
           <div
-            class="project-scroll-item"
+            class="projects__scroll-box__item"
             id="snake-page"
             onclick="goToPage('snake.html')"
           >
-            <div class="project-scroll-item-title">
+            <div class="projects__scroll-box__item__title">
               <h3>Snake game</h3>
             </div>
 
             <img src="images/snakegame.jpg" alt="cfximage" />
           </div>
-          <div class="project-scroll-item" id="pong-project">
-            <div class="project-scroll-item-title">
-              <h3>Lorem, ipsum dolor.</h3>
+          <div class="projects__scroll-box__item" id="pong-project">
+            <div class="projects__scroll-box__item__title">
+              <h3>Lorem, ipsum.</h3>
             </div>
             <img src="images/cfxpage.jpg" alt="cfximage" />
           </div>
@@ -64,11 +64,42 @@
       </section>
       <section id="contact">kontakt</section>
     </div>
-    <script
-      src="https://code.jquery.com/jquery-3.7.1.min.js"
-      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-      crossorigin="anonymous"
-    ></script>
+    <script src="vanta-background/three.r134.min.js"></script>
+    <script src="vanta-background/vanta.waves.min.js"></script>
+    <script>
+      VANTA.WAVES({
+        el: "#about",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        color: 0x252525,
+        shininess: 19.0,
+        waveHeight: 13.0,
+        waveSpeed: 0.35,
+        zoom: 0.8,
+      });
+    </script>
+    <script src="/vanta-background/vanta.net.min.js"></script>
+    <script>
+      VANTA.NET({
+        el: "#projects",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        color: 0xe6dcbc,
+        backgroundColor: 0x222222,
+        maxDistance: 12.0,
+        spacing: 30.0,
+      });
+    </script>
     <script src="index.js"></script>
   </body>
 </html>
