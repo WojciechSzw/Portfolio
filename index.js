@@ -1,10 +1,10 @@
-var _a;
-var pageActual = 0;
-var wheeling = false;
-var mainContainer = document.getElementById("main");
-var navbarLink = document.getElementsByClassName("navbar-link");
-var pagesCount = (_a = mainContainer === null || mainContainer === void 0 ? void 0 : mainContainer.children.length) !== null && _a !== void 0 ? _a : 0;
-var timeoutID = -1;
+"use strict";
+let pageActual = 0;
+let wheeling = false;
+const mainContainer = document.getElementById("main");
+const navbarLink = document.getElementsByClassName("navbar-link");
+const pagesCount = mainContainer?.children.length ?? 0;
+let timeoutID = -1;
 window.addEventListener("wheel", ScrollFullPage);
 function ScrollFullPage(event) {
     if (wheeling || Math.abs(event.deltaY) < 30)
@@ -17,19 +17,18 @@ function ScrollFullPage(event) {
     else if (event.deltaY < 0 && pageActual > 0) {
         goTo(pageActual - 1);
     }
-    timeoutID = window.setTimeout(function () { return (wheeling = false); }, 600);
+    timeoutID = window.setTimeout(() => (wheeling = false), 600);
 }
 function goTo(pageIndex) {
-    var _a;
     deleteNavbarChosen();
     navbarLink[pageIndex].classList.add("navbar-chosen");
-    (_a = mainContainer === null || mainContainer === void 0 ? void 0 : mainContainer.children[pageIndex]) === null || _a === void 0 ? void 0 : _a.scrollIntoView({ behavior: "smooth" });
+    mainContainer?.children[pageIndex]?.scrollIntoView({ behavior: "smooth" });
     pageActual = pageIndex;
     // console.log(pageActual);
 }
 //deletes navbar-chosen class (underline) from every element
 function deleteNavbarChosen() {
-    for (var x = 0; x < document.getElementsByClassName("navbar-link").length; x++) {
+    for (let x = 0; x < document.getElementsByClassName("navbar-link").length; x++) {
         document
             .getElementsByClassName("navbar-link")[x].classList.remove("navbar-chosen");
     }
@@ -37,15 +36,15 @@ function deleteNavbarChosen() {
 function goToPage(page) {
     window.location = page;
 }
-window.onload = function (a) {
+window.onload = (a) => {
     //always go to first page on reload
     goTo(0);
     //Making title vertical and spaced evenly
-    var parents = document.getElementsByClassName("projects__scroll-box__item__title");
-    Array.from(parents).forEach(function (div) {
-        var title = div.children[0];
-        var wholeText = title.innerHTML;
-        Array.from(wholeText).forEach(function (letter) {
+    const parents = document.getElementsByClassName("projects__scroll-box__item__title");
+    Array.from(parents).forEach((div) => {
+        const title = div.children[0];
+        const wholeText = title.innerHTML;
+        Array.from(wholeText).forEach((letter) => {
             if (letter !== " ") {
                 div.insertAdjacentHTML("beforeend", "<h3>" + letter + "</h3>");
             }
@@ -63,20 +62,20 @@ function goToActualPage() {
     goTo(pageActual);
 }
 function makeScrollItemsSquare() {
-    var scrollItems = document.querySelectorAll(".projects__scroll-box__item");
-    Array.from(scrollItems).forEach(function (item) {
+    const scrollItems = document.querySelectorAll(".projects__scroll-box__item");
+    Array.from(scrollItems).forEach((item) => {
         item.style.width = item.offsetHeight + "px";
         item.style.minWidth = item.offsetHeight + "px";
     });
-    var middleItemTitle = document.querySelectorAll(".projects__scroll-box__item__title");
-    var scrollBox = document.querySelector(".projects__scroll-box");
+    const middleItemTitle = document.querySelectorAll(".projects__scroll-box__item__title");
+    const scrollBox = document.querySelector(".projects__scroll-box");
     scrollBox.style.marginRight = middleItemTitle[0].offsetWidth * 1.2 + "px";
 }
-window.addEventListener("resize", function () {
+window.addEventListener("resize", () => {
     goToActualPage();
     makeScrollItemsSquare();
 });
-window.onunload = function () {
+window.onunload = () => {
     window.removeEventListener("resize", goToActualPage);
     window.removeEventListener("wheel", ScrollFullPage);
 };
