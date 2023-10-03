@@ -8,17 +8,22 @@
 }
 @keyframes scale-up {
   0% {
+    z-index: 1;
     transform: translateX(-500px) scale(1);
   }
   100% {
+    z-index: 2;
     transform: translate(0) scale(1.2);
   }
 }
 @keyframes scale-down {
   0% {
+    background: transparent;
+    z-index: 2;
     transform: translateX(-500px) scale(1.2);
   }
   100% {
+    z-index: 1;
     transform: translate(0) scale(1);
   }
 }
