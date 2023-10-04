@@ -142,7 +142,7 @@
       &:nth-child(1) {
         position: relative;
       }
-      &:nth-child(1)::before {
+      &__shadowL {
         content: "";
         position: absolute;
         top: 0;
@@ -152,6 +152,7 @@
         background: linear-gradient(to left, #222222, transparent);
         z-index: 1;
       }
+
       // MIDDLE IMG
       &:nth-child(2) {
         transform: scale(1.2);
@@ -161,7 +162,7 @@
       &:nth-child(3) {
         position: relative;
       }
-      &:nth-child(3)::before {
+      &__shadowR {
         content: "";
         position: absolute;
         top: 0;
@@ -171,19 +172,13 @@
         background: linear-gradient(to RIGHT, #222222, transparent);
         z-index: 1;
       }
-    }
-
-    #snake-page {
-      h3 {
-        color: red;
+      //thrown out img
+      &:nth-child(4) {
+        position: absolute;
+        left: 65%;
+        top: 4%;
+        z-index: -1;
       }
     }
-    #cfxpage-project {
-      h3 {
-        color: hsl(196, 68%, 59%);
-      }
-    }
-    // #pong-project{
-    // }
   }
 }

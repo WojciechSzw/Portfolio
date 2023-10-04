@@ -1,6 +1,9 @@
 @keyframes spin-to-right {
   0% {
-    transform: translateX(-1000px);
+    transform: translateX(-1000%);
+  }
+  30% {
+    transform: translateX(-150%);
   }
   100% {
     transform: translate(0);
@@ -9,7 +12,7 @@
 @keyframes scale-up {
   0% {
     z-index: 1;
-    transform: translateX(-500px) scale(1);
+    transform: translateX(-100%) scale(1);
   }
   100% {
     z-index: 2;
@@ -18,23 +21,55 @@
 }
 @keyframes scale-down {
   0% {
-    background: transparent;
     z-index: 2;
-    transform: translateX(-500px) scale(1.2);
+    transform: translateX(-100%) scale(1.2);
+  }
+  30% {
+    transform: translatex(-50%) scale(1.05);
   }
   100% {
     z-index: 1;
     transform: translate(0) scale(1);
   }
 }
+@keyframes throw-it-out-R {
+  0% {
+    transform: translateX(0%);
+  }
+  30% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translate(1000%);
+  }
+}
+@keyframes opacity-to-true {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.shadow-opacity {
+  animation: opacity-to-true 2s ease-in;
+}
+
 .spin-to-right__first-child {
   animation: spin-to-right 2s ease-in;
 }
 
 .spin-to-right__second-child {
-  animation: spin-to-right 2s ease-in, scale-up 2s ease-in;
+  animation: scale-up 2s ease-in;
 }
 
 .spin-to-right__third-child {
-  animation: spin-to-right 2s ease-in, scale-down 2s ease-in;
+  animation: scale-down 2s ease-in;
+}
+
+.spin-to-right__fourth-child {
+  animation: throw-it-out-R 2s ease-in;
 }/*# sourceMappingURL=animations.css.map */

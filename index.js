@@ -24,7 +24,6 @@ function goTo(pageIndex) {
     navbarLink[pageIndex].classList.add("navbar-chosen");
     mainContainer?.children[pageIndex]?.scrollIntoView({ behavior: "smooth" });
     pageActual = pageIndex;
-    // console.log(pageActual);
 }
 //deletes navbar-chosen class (underline) from every element
 function deleteNavbarChosen() {
@@ -33,7 +32,7 @@ function deleteNavbarChosen() {
             .getElementsByClassName("navbar-link")[x].classList.remove("navbar-chosen");
     }
 }
-function goToPage(page) {
+function goToProject(page) {
     window.location = page;
 }
 window.onload = (a) => {
@@ -70,6 +69,9 @@ function makeScrollItemsSquare() {
     const middleItemTitle = document.querySelectorAll(".projects__scroll-box__item__title");
     const scrollBox = document.querySelector(".projects__scroll-box");
     scrollBox.style.marginRight = middleItemTitle[0].offsetWidth * 1.2 + "px";
+    //making thrown out img on right place
+    scrollItems[3].style.left =
+        "calc(50% + " + scrollItems[3].offsetWidth / 2 + "px)";
 }
 window.addEventListener("resize", () => {
     goToActualPage();

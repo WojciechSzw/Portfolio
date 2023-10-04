@@ -24,7 +24,6 @@ function goTo(pageIndex: number) {
   navbarLink[pageIndex].classList.add("navbar-chosen");
   mainContainer?.children[pageIndex]?.scrollIntoView({ behavior: "smooth" });
   pageActual = pageIndex;
-  // console.log(pageActual);
 }
 
 //deletes navbar-chosen class (underline) from every element
@@ -40,7 +39,7 @@ function deleteNavbarChosen() {
   }
 }
 
-function goToPage(page: Location) {
+function goToProject(page: Location) {
   window.location = page;
 }
 
@@ -89,6 +88,10 @@ function makeScrollItemsSquare() {
   );
 
   scrollBox!.style.marginRight = middleItemTitle[0].offsetWidth * 1.2 + "px";
+
+  //making thrown out img on right place
+  scrollItems[3].style.left =
+    "calc(50% + " + scrollItems[3].offsetWidth / 2 + "px)";
 }
 
 window.addEventListener("resize", () => {

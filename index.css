@@ -1,6 +1,9 @@
 @keyframes spin-to-right {
   0% {
-    transform: translateX(-1000px);
+    transform: translateX(-1000%);
+  }
+  30% {
+    transform: translateX(-150%);
   }
   100% {
     transform: translate(0);
@@ -9,7 +12,7 @@
 @keyframes scale-up {
   0% {
     z-index: 1;
-    transform: translateX(-500px) scale(1);
+    transform: translateX(-100%) scale(1);
   }
   100% {
     z-index: 2;
@@ -18,25 +21,57 @@
 }
 @keyframes scale-down {
   0% {
-    background: transparent;
     z-index: 2;
-    transform: translateX(-500px) scale(1.2);
+    transform: translateX(-100%) scale(1.2);
+  }
+  30% {
+    transform: translatex(-50%) scale(1.05);
   }
   100% {
     z-index: 1;
     transform: translate(0) scale(1);
   }
 }
+@keyframes throw-it-out-R {
+  0% {
+    transform: translateX(0%);
+  }
+  30% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translate(1000%);
+  }
+}
+@keyframes opacity-to-true {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.shadow-opacity {
+  animation: opacity-to-true 2s ease-in;
+}
+
 .spin-to-right__first-child {
   animation: spin-to-right 2s ease-in;
 }
 
 .spin-to-right__second-child {
-  animation: spin-to-right 2s ease-in, scale-up 2s ease-in;
+  animation: scale-up 2s ease-in;
 }
 
 .spin-to-right__third-child {
-  animation: spin-to-right 2s ease-in, scale-down 2s ease-in;
+  animation: scale-down 2s ease-in;
+}
+
+.spin-to-right__fourth-child {
+  animation: throw-it-out-R 2s ease-in;
 }
 
 * {
@@ -178,7 +213,7 @@
 .projects__scroll-box__item:nth-child(1) {
   position: relative;
 }
-.projects__scroll-box__item:nth-child(1)::before {
+.projects__scroll-box__item__shadowL {
   content: "";
   position: absolute;
   top: 0;
@@ -195,7 +230,7 @@
 .projects__scroll-box__item:nth-child(3) {
   position: relative;
 }
-.projects__scroll-box__item:nth-child(3)::before {
+.projects__scroll-box__item__shadowR {
   content: "";
   position: absolute;
   top: 0;
@@ -205,9 +240,9 @@
   background: linear-gradient(to RIGHT, #222222, transparent);
   z-index: 1;
 }
-.projects__scroll-box #snake-page h3 {
-  color: red;
-}
-.projects__scroll-box #cfxpage-project h3 {
-  color: hsl(196, 68%, 59%);
+.projects__scroll-box__item:nth-child(4) {
+  position: absolute;
+  left: 65%;
+  top: 4%;
+  z-index: -1;
 }/*# sourceMappingURL=index.css.map */
