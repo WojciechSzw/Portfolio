@@ -35,9 +35,30 @@ function deleteNavbarChosen() {
 function goToProject(page) {
     window.location = page;
 }
-window.onload = (a) => {
-    //always go to first page on reload
-    goTo(0);
+function goToActualPage() {
+    goTo(pageActual);
+}
+function makeScrollItemsSquare() {
+    const scrollItems = document.querySelectorAll(".projects__scroll-box__item");
+    Array.from(scrollItems).forEach((item) => {
+        item.style.width = item.offsetHeight + "px";
+        item.style.minWidth = item.offsetHeight + "px";
+    });
+    const middleItemTitle = document.querySelectorAll(".projects__scroll-box__item__title");
+    const scrollBox = document.querySelector(".projects__scroll-box");
+    scrollBox.style.marginRight = middleItemTitle[0].offsetWidth * 1.2 + "px";
+    //making thrown out img on right place
+    scrollItems[3].style.left =
+        "calc(50% - " + scrollItems[3].offsetWidth / 2 + "px)";
+}
+function heightScrollBox() {
+    //set also by css(idk why but without it doesnt werk :()
+    const scrollBox = document.querySelector(".projects__scroll-box");
+    if (scrollBox != undefined) {
+        scrollBox.style.height = "calc(80% - 100px)";
+    }
+}
+function verticalTitles() {
     //Making title vertical and spaced evenly
     const parents = document.getElementsByClassName("projects__scroll-box__item__title");
     Array.from(parents).forEach((div) => {
@@ -55,27 +76,18 @@ window.onload = (a) => {
         });
         title.remove();
     });
+}
+window.onload = (a) => {
+    //always go to first page on reload
+    goTo(0);
+    verticalTitles();
     makeScrollItemsSquare();
+    heightScrollBox();
 };
-function goToActualPage() {
-    goTo(pageActual);
-}
-function makeScrollItemsSquare() {
-    const scrollItems = document.querySelectorAll(".projects__scroll-box__item");
-    Array.from(scrollItems).forEach((item) => {
-        item.style.width = item.offsetHeight + "px";
-        item.style.minWidth = item.offsetHeight + "px";
-    });
-    const middleItemTitle = document.querySelectorAll(".projects__scroll-box__item__title");
-    const scrollBox = document.querySelector(".projects__scroll-box");
-    scrollBox.style.marginRight = middleItemTitle[0].offsetWidth * 1.2 + "px";
-    //making thrown out img on right place
-    scrollItems[3].style.left =
-        "calc(50% + " + scrollItems[3].offsetWidth / 2 + "px)";
-}
 window.addEventListener("resize", () => {
     goToActualPage();
     makeScrollItemsSquare();
+    heightScrollBox();
 });
 window.onunload = () => {
     window.removeEventListener("resize", goToActualPage);

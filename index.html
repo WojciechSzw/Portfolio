@@ -37,8 +37,13 @@
       <section class="projects" id="projects">
         <h2 class="projects__title">My projects</h2>
         <div class="projects__scroll-box">
-          <div class="projects__scroll-box__item" id="cfxpage-project">
+          <div
+            class="projects__scroll-box__item"
+            id="cfxpage-project"
+            onclick="spinRight()"
+          >
             <div class="projects__scroll-box__item__shadowL"></div>
+            <div class="projects__scroll-box__item__spinL"></div>
             <div class="projects__scroll-box__item__title">
               <h3>Cfx lab page</h3>
             </div>
@@ -61,8 +66,9 @@
             </div>
             <img src="images/cfxpage.jpg" alt="cfximage" />
           </div>
-          <div class="projects__scroll-box__item">
+          <div class="projects__scroll-box__item" onclick="spinLeft()">
             <div class="projects__scroll-box__item__shadowR"></div>
+            <div class="projects__scroll-box__item__spinR"></div>
             <div class="projects__scroll-box__item__title">
               <h3>Lorem, ipsum.</h3>
             </div>

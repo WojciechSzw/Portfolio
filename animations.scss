@@ -1,3 +1,5 @@
+$spin-animation-time: 1.5s;
+
 @keyframes spin-to-right {
   0% {
     transform: translateX(-1000%);
@@ -10,7 +12,7 @@
   }
 }
 
-@keyframes scale-up {
+@keyframes scale-up-R {
   0% {
     z-index: 1;
     transform: translateX(-100%) scale(1);
@@ -21,7 +23,7 @@
   }
 }
 
-@keyframes scale-down {
+@keyframes scale-down-R {
   0% {
     z-index: 2;
     transform: translateX(-100%) scale(1.2);
@@ -37,13 +39,65 @@
 
 @keyframes throw-it-out-R {
   0% {
-    transform: translateX(0%);
+    transform: translateX(100%);
   }
   30% {
-    transform: translateX(100%);
+    transform: translateX(200%);
   }
   100% {
     transform: translate(1000%);
+  }
+}
+
+@keyframes spin-to-left {
+  //trzecie foto
+  0% {
+    transform: translateX(1000%);
+  }
+  30% {
+    transform: translateX(150%);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes scale-up-L {
+  //drugie foto
+  0% {
+    z-index: 1;
+    transform: translateX(100%) scale(1);
+  }
+  100% {
+    z-index: 2;
+    transform: translate(0) scale(1.2);
+  }
+}
+
+@keyframes scale-down-L {
+  //pierwsze foto
+  0% {
+    z-index: 2;
+    transform: translateX(100%) scale(1.2);
+  }
+  30% {
+    transform: translatex(50%) scale(1.05);
+  }
+  100% {
+    z-index: 1;
+    transform: translate(0) scale(1);
+  }
+}
+
+@keyframes throw-it-out-L {
+  0% {
+    transform: translateX(-100%);
+  }
+  30% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translate(-1000%);
   }
 }
 
@@ -60,21 +114,37 @@
 }
 
 .shadow-opacity {
-  animation: opacity-to-true 2s ease-in;
+  animation: opacity-to-true $spin-animation-time ease-in;
 }
 
 .spin-to-right__first-child {
-  animation: spin-to-right 2s ease-in;
+  animation: spin-to-right $spin-animation-time ease-in;
 }
 
 .spin-to-right__second-child {
-  animation: scale-up 2s ease-in;
+  animation: scale-up-R $spin-animation-time ease-in;
 }
 
 .spin-to-right__third-child {
-  animation: scale-down 2s ease-in;
+  animation: scale-down-R $spin-animation-time ease-in;
 }
 
 .spin-to-right__fourth-child {
-  animation: throw-it-out-R 2s ease-in;
+  animation: throw-it-out-R $spin-animation-time ease-in;
+}
+///////
+.spin-to-left__first-child {
+  animation: scale-down-L $spin-animation-time ease-in;
+}
+
+.spin-to-left__second-child {
+  animation: scale-up-L $spin-animation-time ease-in;
+}
+
+.spin-to-left__third-child {
+  animation: spin-to-left $spin-animation-time ease-in;
+}
+
+.spin-to-left__fourth-child {
+  animation: throw-it-out-L $spin-animation-time ease-in;
 }

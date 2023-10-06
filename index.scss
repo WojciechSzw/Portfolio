@@ -103,11 +103,14 @@
     text-align: center;
     font-size: 7vh;
     color: antiquewhite;
-    margin: calc(100px + 1%) 0px 1% 0px;
+    margin-top: calc(100px + 1%);
+    margin-bottom: 1%;
+    margin-left: 0px;
+    margin-right: 0px;
   }
 
   &__scroll-box {
-    height: calc(80% - 100px);
+    height: calc(80% - 100px); //height set also by index.ts
     width: 100%;
     display: flex;
     justify-content: center;
@@ -119,7 +122,8 @@
       justify-content: center;
       align-items: center;
       &__title {
-        // background-color: #303030;
+        background-color: rgba(128, 128, 128, 0.112);
+        border-radius: 10px;
         height: 90%;
         width: 7%;
         margin: 0 1.5%;
@@ -138,12 +142,15 @@
         height: 90%;
         width: 90%;
       }
-      //LEFT IMG
+      //LEFT ITEM
       &:nth-child(1) {
         position: relative;
+        &:hover {
+          cursor: pointer;
+          opacity: 0.7;
+        }
       }
       &__shadowL {
-        content: "";
         position: absolute;
         top: 0;
         right: 0;
@@ -153,14 +160,31 @@
         z-index: 1;
       }
 
-      // MIDDLE IMG
+      // &__spinL {
+      //   position: absolute;
+      //   height: 100%;
+      //   width: 100%;
+      //   background: rgba(71, 45, 45, 0);
+      //   //border-radius: 5%;
+      //   z-index: 3;
+      //   &:hover {
+      //     background: rgba(128, 128, 128, 0.042);
+      //     cursor: pointer;
+      //   }
+      // }
+
+      // MIDDLE ITEM
       &:nth-child(2) {
         transform: scale(1.2);
         z-index: 2;
       }
-      //RIGHT IMG
+      //RIGHT ITEM
       &:nth-child(3) {
         position: relative;
+        &:hover {
+          opacity: 0.7;
+          cursor: pointer;
+        }
       }
       &__shadowR {
         content: "";
@@ -172,7 +196,19 @@
         background: linear-gradient(to RIGHT, #222222, transparent);
         z-index: 1;
       }
-      //thrown out img
+      // &__spinR {
+      //   position: absolute;
+      //   height: 100%;
+      //   width: 100%;
+      //   background: rgba(71, 45, 45, 0);
+      //   //border-radius: 5%;
+      //   z-index: 3;
+      //   &:hover {
+      //     background: rgba(128, 128, 128, 0.042);
+      //     cursor: pointer;
+      //   }
+      // }
+      //thrown out ITEM
       &:nth-child(4) {
         position: absolute;
         left: 65%;
