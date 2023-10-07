@@ -145,8 +145,10 @@
       //LEFT ITEM
       &:nth-child(1) {
         position: relative;
+        transition: opacity 0.5s;
         &:hover {
           cursor: pointer;
+          opacity: 1;
           opacity: 0.7;
         }
       }
@@ -181,9 +183,11 @@
       //RIGHT ITEM
       &:nth-child(3) {
         position: relative;
+        transition: opacity 0.5s;
         &:hover {
-          opacity: 0.7;
           cursor: pointer;
+          opacity: 1;
+          opacity: 0.7;
         }
       }
       &__shadowR {

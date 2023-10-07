@@ -1,4 +1,6 @@
 "use strict";
+let spinAnimationInProgress = false;
+const spinAnimationTime = 1500;
 document.onkeydown = function (event) {
     console.log(event.key);
     switch (event.key) {
@@ -13,6 +15,9 @@ document.onkeydown = function (event) {
     }
 };
 function spinRight() {
+    if (spinAnimationInProgress === true)
+        return;
+    startSpinAnimationTimer();
     const scrollItems = document.querySelectorAll(".projects__scroll-box__item");
     for (let x = 0; x < scrollItems.length; x++) {
         const item = scrollItems[x];
@@ -68,6 +73,9 @@ function spinRight() {
     }
 }
 function spinLeft() {
+    if (spinAnimationInProgress === true)
+        return;
+    startSpinAnimationTimer();
     const scrollItems = document.querySelectorAll(".projects__scroll-box__item");
     for (let x = 0; x < scrollItems.length; x++) {
         const item = scrollItems[x];
@@ -128,4 +136,10 @@ function removeClassFromElement(HtmlElement, beginingOfClassName) {
         .split(" ")
         .filter((c) => !c.startsWith(prefix));
     HtmlElement.className = classes.join(" ").trim();
+}
+function startSpinAnimationTimer() {
+    spinAnimationInProgress = true;
+    setTimeout(function () {
+        spinAnimationInProgress = false;
+    }, spinAnimationTime);
 }
