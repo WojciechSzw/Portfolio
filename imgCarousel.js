@@ -1,6 +1,7 @@
 "use strict";
 let spinAnimationInProgress = false;
 const spinAnimationTime = 1500;
+let actualMiddleItemID = 1;
 document.onkeydown = function (event) {
     console.log(event.key);
     switch (event.key) {
@@ -11,6 +12,9 @@ document.onkeydown = function (event) {
         case "ArrowRight":
             console.log("prawo");
             spinRight();
+            break;
+        case "ArrowDown":
+            initializeItems();
             break;
     }
 };
@@ -142,4 +146,53 @@ function startSpinAnimationTimer() {
     setTimeout(function () {
         spinAnimationInProgress = false;
     }, spinAnimationTime);
+}
+const ListItems = [
+    {
+        id: "cfxpage-project",
+        onclick: "",
+        title: "Cfx lab page",
+        imgSrc: "images/cfxpage.jpg",
+        imgAlt: "cfximage",
+    },
+    {
+        id: "snake-page",
+        onclick: "goToProject('snake.html')",
+        title: "Snake game",
+        imgSrc: "images/snakegame.jpg",
+        imgAlt: "snakeimg",
+    },
+    {
+        id: "hold-page",
+        onclick: "",
+        title: "hold page",
+        imgSrc: "images/holdimg.jpg",
+        imgAlt: "holdimg",
+    },
+];
+function initializeItems() {
+    const items = document.querySelectorAll(".projects__scroll-box__item");
+    const itemsTitles = document.querySelectorAll(".projects__scroll-box__item__title h3");
+    const itemsImg = document.querySelectorAll(".projects__scroll-box__item img");
+    for (let x = 0; x < items.length; x++) {
+        switch (x) {
+            case 0:
+            case 1:
+                items[x].id = ListItems[x].id; ////PODEJRZEWAM ŻE H3 I IMG JEST BRANY TYLKO PIERWSZY A NIE CAŁA LISTA
+                itemsTitles[x].innerHTML = ListItems[x].title;
+                itemsImg[x].src = ListItems[x].imgSrc;
+                itemsImg[x].alt = ListItems[x].imgAlt;
+                break;
+        }
+    }
+}
+function replaceItemsL() {
+    const items = document.querySelectorAll(".projects__scroll-box__item");
+    for (let x = 0; x < items.length; x++) {
+        const item = items[x];
+        switch (x) {
+            case 1:
+                break;
+        }
+    }
 }
