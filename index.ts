@@ -39,8 +39,8 @@ function deleteNavbarChosen() {
   }
 }
 
-function goToProject(page: Location) {
-  window.location = page;
+function goToProject(page: string) {
+  window.location.href = page;
 }
 
 function goToActualPage() {
@@ -85,7 +85,14 @@ function verticalTitles() {
   const parents = document.getElementsByClassName(
     "projects__scroll-box__item__title"
   );
+  //deleting other h3 (if they are)
   Array.from(parents).forEach((div) => {
+    if (div.children[1]!) {
+      for (let y = div.children.length - 1; y > 0; y--) {
+        div.children[y].remove();
+      }
+    }
+    // back to Making title vertical and spaced evenly
     const title = div.children[0];
     const wholeText = title.innerHTML;
     Array.from(wholeText).forEach((letter) => {

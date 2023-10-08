@@ -33,7 +33,7 @@ function deleteNavbarChosen() {
     }
 }
 function goToProject(page) {
-    window.location = page;
+    window.location.href = page;
 }
 function goToActualPage() {
     goTo(pageActual);
@@ -61,7 +61,14 @@ function heightScrollBox() {
 function verticalTitles() {
     //Making title vertical and spaced evenly
     const parents = document.getElementsByClassName("projects__scroll-box__item__title");
+    //deleting other h3 (if they are)
     Array.from(parents).forEach((div) => {
+        if (div.children[1]) {
+            for (let y = div.children.length - 1; y > 0; y--) {
+                div.children[y].remove();
+            }
+        }
+        // back to Making title vertical and spaced evenly
         const title = div.children[0];
         const wholeText = title.innerHTML;
         Array.from(wholeText).forEach((letter) => {

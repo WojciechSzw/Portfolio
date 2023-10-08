@@ -1,7 +1,8 @@
 "use strict";
 let spinAnimationInProgress = false;
 const spinAnimationTime = 1500;
-let actualMiddleItemID = 1;
+const initialItemsID = { left: 0, middle: 1, right: 2, behind: 3 };
+let actualItemsID = { left: 0, middle: 1, right: 2, behind: 3 };
 document.onkeydown = function (event) {
     console.log(event.key);
     switch (event.key) {
@@ -14,7 +15,9 @@ document.onkeydown = function (event) {
             spinRight();
             break;
         case "ArrowDown":
-            initializeItems();
+            break;
+        case "ArrowUp":
+            replaceItems(0);
             break;
     }
 };
@@ -22,6 +25,7 @@ function spinRight() {
     if (spinAnimationInProgress === true)
         return;
     startSpinAnimationTimer();
+    replaceItems(-1);
     const scrollItems = document.querySelectorAll(".projects__scroll-box__item");
     for (let x = 0; x < scrollItems.length; x++) {
         const item = scrollItems[x];
@@ -80,6 +84,7 @@ function spinLeft() {
     if (spinAnimationInProgress === true)
         return;
     startSpinAnimationTimer();
+    replaceItems(1);
     const scrollItems = document.querySelectorAll(".projects__scroll-box__item");
     for (let x = 0; x < scrollItems.length; x++) {
         const item = scrollItems[x];
@@ -147,52 +152,117 @@ function startSpinAnimationTimer() {
         spinAnimationInProgress = false;
     }, spinAnimationTime);
 }
-const ListItems = [
-    {
-        id: "cfxpage-project",
-        onclick: "",
-        title: "Cfx lab page",
-        imgSrc: "images/cfxpage.jpg",
-        imgAlt: "cfximage",
-    },
-    {
-        id: "snake-page",
-        onclick: "goToProject('snake.html')",
-        title: "Snake game",
-        imgSrc: "images/snakegame.jpg",
-        imgAlt: "snakeimg",
-    },
-    {
-        id: "hold-page",
-        onclick: "",
-        title: "hold page",
-        imgSrc: "images/holdimg.jpg",
-        imgAlt: "holdimg",
-    },
-];
-function initializeItems() {
+function replaceItems(direction) {
+    const ListItems = [
+        {
+            id: "cfxpage-project",
+            onclick: null,
+            title: "Cfx lab page",
+            imgSrc: "images/holdimg0.jpg",
+            imgAlt: "cfximage",
+        },
+        {
+            id: "snake-page",
+            onclick: () => {
+                goToProject("snake.html");
+            },
+            title: "Snake game",
+            imgSrc: "images/holdimg1.jpg",
+            imgAlt: "snakeimg",
+        },
+        {
+            id: "hold-page",
+            onclick: null,
+            title: "hold page",
+            imgSrc: "images/holdimg2.jpg",
+            imgAlt: "holdimg",
+        },
+        {
+            id: "hold-page",
+            onclick: null,
+            title: "hold page",
+            imgSrc: "images/holdimg3.jpg",
+            imgAlt: "holdimg",
+        },
+    ];
     const items = document.querySelectorAll(".projects__scroll-box__item");
-    const itemsTitles = document.querySelectorAll(".projects__scroll-box__item__title h3");
+    const itemsTitlesDivs = document.querySelectorAll(".projects__scroll-box__item__title");
     const itemsImg = document.querySelectorAll(".projects__scroll-box__item img");
+    const newItemsID = {
+        left: 0,
+        middle: 0,
+        right: 0,
+        behind: 0,
+    };
+    function settingPositionOfNewItems() {
+        switch (direction) {
+            case -1:
+                if (actualItemsID.left === 0) {
+                    newItemsID.left = ListItems.length - 1;
+                }
+                else {
+                    newItemsID.left = actualItemsID.left - 1;
+                }
+                newItemsID.middle = actualItemsID.left;
+                newItemsID.right = actualItemsID.middle;
+                newItemsID.behind = actualItemsID.right;
+                break;
+            case 0:
+                newItemsID.left = initialItemsID.left;
+                newItemsID.middle = initialItemsID.middle;
+                newItemsID.right = initialItemsID.right;
+                newItemsID.behind = initialItemsID.behind;
+                break;
+            case 1:
+                if (actualItemsID.right === ListItems.length - 1) {
+                    newItemsID.right = 0;
+                }
+                else {
+                    newItemsID.right = actualItemsID.right + 1;
+                }
+                newItemsID.left = actualItemsID.middle;
+                newItemsID.middle = actualItemsID.right;
+                newItemsID.behind = actualItemsID.left;
+                break;
+        }
+    }
+    settingPositionOfNewItems();
     for (let x = 0; x < items.length; x++) {
         switch (x) {
             case 0:
+                items[x].id = ListItems[newItemsID.left].id;
+                itemsTitlesDivs[x].children[0].innerHTML =
+                    ListItems[newItemsID.left].title;
+                itemsImg[x].src = ListItems[newItemsID.left].imgSrc;
+                itemsImg[x].alt = ListItems[newItemsID.left].imgAlt;
+                break;
             case 1:
-                items[x].id = ListItems[x].id; ////PODEJRZEWAM ŻE H3 I IMG JEST BRANY TYLKO PIERWSZY A NIE CAŁA LISTA
-                itemsTitles[x].innerHTML = ListItems[x].title;
-                itemsImg[x].src = ListItems[x].imgSrc;
-                itemsImg[x].alt = ListItems[x].imgAlt;
+                items[x].id = ListItems[newItemsID.middle].id;
+                items[x].onclick = ListItems[newItemsID.middle].onclick;
+                itemsTitlesDivs[x].children[0].innerHTML =
+                    ListItems[newItemsID.middle].title;
+                itemsImg[x].src = ListItems[newItemsID.middle].imgSrc;
+                itemsImg[x].alt = ListItems[newItemsID.middle].imgAlt;
+                break;
+            case 2:
+                items[x].id = ListItems[newItemsID.right].id;
+                itemsTitlesDivs[x].children[0].innerHTML =
+                    ListItems[newItemsID.right].title;
+                itemsImg[x].src = ListItems[newItemsID.right].imgSrc;
+                itemsImg[x].alt = ListItems[newItemsID.right].imgAlt;
+                break;
+            case 3:
+                items[x].id = ListItems[newItemsID.behind].id;
+                itemsTitlesDivs[x].children[0].innerHTML =
+                    ListItems[newItemsID.behind].title;
+                itemsImg[x].src = ListItems[newItemsID.behind].imgSrc;
+                itemsImg[x].alt = ListItems[newItemsID.behind].imgAlt;
                 break;
         }
     }
-}
-function replaceItemsL() {
-    const items = document.querySelectorAll(".projects__scroll-box__item");
-    for (let x = 0; x < items.length; x++) {
-        const item = items[x];
-        switch (x) {
-            case 1:
-                break;
-        }
-    }
+    verticalTitles();
+    actualItemsID.left = newItemsID.left;
+    actualItemsID.middle = newItemsID.middle;
+    actualItemsID.right = newItemsID.right;
+    actualItemsID.behind = newItemsID.behind;
 }
