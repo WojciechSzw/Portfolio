@@ -111,6 +111,7 @@ function verticalTitles() {
 window.onload = (a) => {
   //always go to first page on reload
   goTo(0);
+  replaceItems(0);
   verticalTitles();
   makeScrollItemsSquare();
   heightScrollBox();

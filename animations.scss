@@ -1,13 +1,13 @@
-$spin-animation-time: 1s;
+$spin-animation-time: 0.5s;
 
 @keyframes spin-to-right {
   0% {
     transform: translateX(-1000%);
   }
-  10% {
+  20% {
     transform: translateX(-150%);
   }
-  85% {
+  60% {
     transform: translate(0);
   }
 }
@@ -17,11 +17,11 @@ $spin-animation-time: 1s;
     z-index: 1;
     transform: translateX(-100%) scale(1);
   }
-  15% {
+  30% {
     z-index: 1;
     transform: translateX(-100%) scale(1);
   }
-  85% {
+  60% {
     z-index: 1;
     transform: translateX(0%) scale(1);
   }
@@ -36,10 +36,10 @@ $spin-animation-time: 1s;
     z-index: 2;
     transform: translateX(-100%) scale(1.2);
   }
-  15% {
+  30% {
     transform: translatex(-100%) scale(1);
   }
-  85% {
+  60% {
     z-index: 1;
     transform: translate(0) scale(1);
   }
@@ -49,10 +49,10 @@ $spin-animation-time: 1s;
   0% {
     transform: translateX(100%);
   }
-  15% {
+  30% {
     transform: translateX(100%);
   }
-  85% {
+  60% {
     transform: translateX(200%);
   }
   100% {
@@ -65,10 +65,10 @@ $spin-animation-time: 1s;
   0% {
     transform: translateX(1000%);
   }
-  30% {
+  20% {
     transform: translateX(150%);
   }
-  100% {
+  60% {
     transform: translate(0);
   }
 }
@@ -79,9 +79,17 @@ $spin-animation-time: 1s;
     z-index: 1;
     transform: translateX(100%) scale(1);
   }
+  30% {
+    z-index: 1;
+    transform: translateX(100%) scale(1);
+  }
+  60% {
+    z-index: 1;
+    transform: translateX(0%) scale(1);
+  }
   100% {
     z-index: 2;
-    transform: translate(0) scale(1.2);
+    transform: translate(0%) scale(1.2);
   }
 }
 
@@ -92,9 +100,9 @@ $spin-animation-time: 1s;
     transform: translateX(100%) scale(1.2);
   }
   30% {
-    transform: translatex(50%) scale(1.05);
+    transform: translatex(100%) scale(1);
   }
-  100% {
+  60% {
     z-index: 1;
     transform: translate(0) scale(1);
   }
@@ -105,6 +113,9 @@ $spin-animation-time: 1s;
     transform: translateX(-100%);
   }
   30% {
+    transform: translateX(-100%);
+  }
+  60% {
     transform: translateX(-200%);
   }
   100% {

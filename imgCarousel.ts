@@ -1,5 +1,5 @@
 let spinAnimationInProgress = false;
-const spinAnimationTime = 1500;
+const spinAnimationTime = 500;
 const initialItemsID = { left: 0, middle: 1, right: 2, behind: 3 };
 let actualItemsID = { left: 0, middle: 1, right: 2, behind: 3 };
 
@@ -14,10 +14,7 @@ document.onkeydown = function (event) {
       console.log("prawo");
       spinRight();
       break;
-    case "ArrowDown":
-      break;
-    case "ArrowUp":
-      replaceItems(0);
+    case "Enter":
       break;
   }
 };
