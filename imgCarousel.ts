@@ -182,7 +182,7 @@ function replaceItems(direction: number) {
     },
     {
       id: "snake-page",
-      onclick: () => {
+      onclick() {
         goToProject("snake.html");
       },
       title: "Snake game",

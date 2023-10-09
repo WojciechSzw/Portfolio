@@ -2,10 +2,10 @@
   0% {
     transform: translateX(-1000%);
   }
-  30% {
+  10% {
     transform: translateX(-150%);
   }
-  100% {
+  85% {
     transform: translate(0);
   }
 }
@@ -13,6 +13,14 @@
   0% {
     z-index: 1;
     transform: translateX(-100%) scale(1);
+  }
+  15% {
+    z-index: 1;
+    transform: translateX(-100%) scale(1);
+  }
+  85% {
+    z-index: 1;
+    transform: translateX(0%) scale(1);
   }
   100% {
     z-index: 2;
@@ -24,10 +32,10 @@
     z-index: 2;
     transform: translateX(-100%) scale(1.2);
   }
-  30% {
-    transform: translatex(-50%) scale(1.05);
+  15% {
+    transform: translatex(-100%) scale(1);
   }
-  100% {
+  85% {
     z-index: 1;
     transform: translate(0) scale(1);
   }
@@ -36,7 +44,10 @@
   0% {
     transform: translateX(100%);
   }
-  30% {
+  15% {
+    transform: translateX(100%);
+  }
+  85% {
     transform: translateX(200%);
   }
   100% {
@@ -100,37 +111,37 @@
   }
 }
 .shadow-opacity {
-  animation: opacity-to-true 1.5s ease-in;
+  animation: opacity-to-true 1s ease-in;
 }
 
 .spin-to-right__first-child {
-  animation: spin-to-right 1.5s ease-in;
+  animation: spin-to-right 1s ease-in;
 }
 
 .spin-to-right__second-child {
-  animation: scale-up-R 1.5s ease-in;
+  animation: scale-up-R 1s ease-in;
 }
 
 .spin-to-right__third-child {
-  animation: scale-down-R 1.5s ease-in;
+  animation: scale-down-R 1s ease-in;
 }
 
 .spin-to-right__fourth-child {
-  animation: throw-it-out-R 1.5s ease-in;
+  animation: throw-it-out-R 1s ease-in;
 }
 
 .spin-to-left__first-child {
-  animation: scale-down-L 1.5s ease-in;
+  animation: scale-down-L 1s ease-in;
 }
 
 .spin-to-left__second-child {
-  animation: scale-up-L 1.5s ease-in;
+  animation: scale-up-L 1s ease-in;
 }
 
 .spin-to-left__third-child {
-  animation: spin-to-left 1.5s ease-in;
+  animation: spin-to-left 1s ease-in;
 }
 
 .spin-to-left__fourth-child {
-  animation: throw-it-out-L 1.5s ease-in;
+  animation: throw-it-out-L 1s ease-in;
 }/*# sourceMappingURL=animations.css.map */
