@@ -268,13 +268,14 @@ body {
   width: clamp(200px, 50%, 900px);
 }
 .about__box__intro__article__title {
+  text-transform: uppercase;
   color: antiquewhite;
-  font-size: 8vh;
+  font-size: 4vw;
   font-weight: 500;
 }
 .about__box__intro__article__text {
   color: antiquewhite;
-  font-size: 3vh;
+  font-size: 1.5vw;
   font-weight: 100;
 }
 .about__box__intro__photo {
@@ -298,11 +299,11 @@ body {
 }
 .about__box__techstack-box__icons-box {
   display: flex;
-  width: 80%;
+  width: 50%;
   justify-content: space-evenly;
 }
 .about__box__techstack-box__icons-box__icon {
-  width: 8%;
+  width: 10%;
 }
 
 .projects {
@@ -312,6 +313,7 @@ body {
   align-items: center;
 }
 .projects__title {
+  text-transform: uppercases;
   width: 100%;
   font-weight: 500;
   text-transform: uppercase;
@@ -339,7 +341,6 @@ body {
 }
 .projects__scroll-box__item__title {
   background-color: rgba(128, 128, 128, 0.112);
-  border-radius: 10px;
   height: 90%;
   width: 7%;
   margin: 0 1.5%;
@@ -413,7 +414,7 @@ body {
   display: flex;
   width: 80%;
   margin: 0 10%;
-  height: calc(100% - 200px);
+  min-height: calc(100% - 200px);
   padding: 100px 0;
   flex-direction: row;
   justify-content: start;
@@ -426,13 +427,48 @@ body {
 }
 .contact__box__left-side__title {
   color: antiquewhite;
-  font-size: 5vw;
+  font-size: 4vw;
   font-weight: 500;
+  text-transform: uppercase;
 }
 .contact__box__left-side__text {
   color: antiquewhite;
-  font-size: 1vw;
+  font-size: 1.5vw;
   font-weight: 100;
+}
+.contact__box__right-side {
+  width: 50%;
+  min-height: calc(100% - 1px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.contact__box__right-side > label {
+  text-transform: uppercase;
+  margin: 2% 0 1.5% 10%;
+  width: 90%;
+  text-justify: left;
+  color: antiquewhite;
+  font-size: 2vh;
+  font-weight: 500;
+}
+.contact__box__right-side > input, .contact__box__right-side > textarea {
+  color: antiquewhite;
+  background-color: #202b39;
+  font-weight: 300;
+  font-size: 2vh;
+  width: 90%;
+  margin-left: 10%;
+  box-shadow: -5px 5px #888888;
+}
+.contact__box__right-side > input {
+  padding: 2%;
+}
+.contact__box__right-side > textarea {
+  padding: 2%;
+  height: 0, 20vh, 40%;
+  resize: none;
 }
 
 .smolscrin {

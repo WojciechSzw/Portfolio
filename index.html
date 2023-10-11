@@ -37,7 +37,7 @@
         <div class="about__box">
           <div class="about__box__intro">
             <div class="about__box__intro__article">
-              <h3 class="about__box__intro__article__title">About me</h3>
+              <h3 class="about__box__intro__article__title">About</h3>
               <p class="about__box__intro__article__text">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aut
                 vero reprehenderit necessitatibus, obcaecati, exercitationem
@@ -47,14 +47,14 @@
                 provident molestiae? Exercitationem soluta odit corporis ab.
               </p>
             </div>
-            <img
+            <!-- <img
               class="about__box__intro__photo"
               src="images/boycoding.png"
               alt=""
-            />
+            /> -->
           </div>
           <div class="about__box__techstack-box">
-            <h3 class="about__box__techstack-box__title">Tech stack</h3>
+            <!-- <h3 class="about__box__techstack-box__title">Tech stack</h3> -->
             <div class="about__box__techstack-box__icons-box">
               <img
                 class="about__box__techstack-box__icons-box__icon"
@@ -68,6 +68,11 @@
               />
               <img
                 class="about__box__techstack-box__icons-box__icon"
+                src="images/techstack_icons/sass-original.png"
+                alt="sass"
+              />
+              <img
+                class="about__box__techstack-box__icons-box__icon"
                 src="images/techstack_icons/javascript-plain.png"
                 alt="javascript"
               />
@@ -76,11 +81,7 @@
                 src="images/techstack_icons/typescript-plain.png"
                 alt="typescript"
               />
-              <img
-                class="about__box__techstack-box__icons-box__icon"
-                src="images/techstack_icons/sass-original.png"
-                alt="sass"
-              />
+
               <img
                 class="about__box__techstack-box__icons-box__icon"
                 src="images/techstack_icons/git-plain.png"
@@ -91,7 +92,7 @@
         </div>
       </section>
       <section class="projects" id="projects">
-        <h2 class="projects__title">My projects</h2>
+        <h2 class="projects__title">My work</h2>
         <div class="projects__scroll-box">
           <div
             class="projects__scroll-box__item"
@@ -133,14 +134,43 @@
       <section class="contact" id="contact">
         <div class="contact__box">
           <div class="contact__box__left-side">
-            <h3 class="contact__box__left-side__title">Contact me</h3>
+            <h3 class="contact__box__left-side__title">Contact</h3>
             <p class="contact__box__left-side__text">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
               delectus maiores laboriosam est consequuntur ut earum cumque
               nostrum consequatur? Excepturi.
             </p>
           </div>
-          <div class="contact__box__right-side"></div>
+          <div class="contact__box__right-side">
+            <label for="name" class="contact__box__right-side__label-name"
+              >Name</label
+            >
+            <input
+              type="text"
+              name="name"
+              id="name"
+              class="contact__box__right-side__input-name"
+            />
+            <label for="email" class="contact__box__right-side__label-email"
+              >E-mail</label
+            >
+            <input
+              type="text"
+              name="email"
+              id="email"
+              class="contact__box__right-side__input-email"
+            />
+            <label for="message" class="contact__box__right-side__label-message"
+              >Message</label
+            >
+            <textarea
+              name="message"
+              id="message"
+              cols="30"
+              rows="10"
+              class="contact__box__right-side__input-message"
+            ></textarea>
+          </div>
         </div>
       </section>
     </div>
