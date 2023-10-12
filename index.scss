@@ -197,9 +197,12 @@ body {
         justify-content: space-evenly;
         align-items: center;
         flex-direction: column;
-        h3 {
+        &__letter0,
+        &__letter1,
+        &__letter2,
+        &__letter3 {
           font-weight: 300;
-          font-size: 1.5vw;
+          font-size: 30px;
           color: #1d0bf4;
           text-transform: uppercase;
         }

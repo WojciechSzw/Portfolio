@@ -60,29 +60,59 @@ function heightScrollBox() {
 }
 function verticalTitles() {
     //Making title vertical and spaced evenly
-    const parents = document.getElementsByClassName("projects__scroll-box__item__title");
+    const parents = document.querySelectorAll(".projects__scroll-box__item__title");
     //deleting other h3 (if they are)
-    Array.from(parents).forEach((div) => {
-        if (div.children[1]) {
-            for (let y = div.children.length - 1; y > 0; y--) {
-                div.children[y].remove();
+    for (let x = 0; x < parents.length; x++) {
+        const titleBox = parents[x];
+        if (titleBox.children[1]) {
+            for (let y = titleBox.children.length - 1; y > 0; y--) {
+                titleBox.children[y].remove();
             }
         }
         // back to Making title vertical and spaced evenly
-        const title = div.children[0];
-        const wholeText = title.innerHTML;
+        const LettersInTitle = titleBox.children;
+        const wholeText = LettersInTitle[0].innerHTML;
         Array.from(wholeText).forEach((letter) => {
+            const letterClass = "class='projects__scroll-box__item__title__letter" + x + "'";
             if (letter !== " ") {
-                div.insertAdjacentHTML("beforeend", "<h3>" + letter + "</h3>");
+                titleBox.insertAdjacentHTML("beforeend", "<h3 " + letterClass + ">" + letter + "</h3>");
             }
             else {
-                div.insertAdjacentHTML("beforeend", "<h3>" + " " + "</h3>");
-                div.insertAdjacentHTML("beforeend", "<h3>" + " " + "</h3>");
-                div.insertAdjacentHTML("beforeend", "<h3>" + " " + "</h3>");
+                titleBox.insertAdjacentHTML("beforeend", "<h3 " + letterClass + ">" + "&nbsp" + "</h3>");
             }
         });
-        title.remove();
-    });
+        LettersInTitle[0].remove();
+    }
+    TitleLettersSize();
+}
+//dynamicly editing size of font if title does not fit into container
+function TitleLettersSize() {
+    const parents = document.querySelectorAll(".projects__scroll-box__item__title");
+    for (let x = 0; x < parents.length; x++) {
+        const titleBox = parents[x];
+        const LettersInTitle = titleBox.children;
+        const letters = document.querySelectorAll(`.projects__scroll-box__item__title__letter${x}`);
+        //jeżeli tekst jest zbyt duży:
+        while (LettersInTitle.length * LettersInTitle[0].offsetHeight >
+            titleBox.offsetHeight) {
+            const style = getComputedStyle(letters[0]);
+            letters.forEach((letter) => {
+                // Set the font size for each element
+                letter.style.fontSize =
+                    parseFloat(style.fontSize.slice(0, -2)) - 1 + "px";
+            });
+        }
+        //jeżeli tekst jest zbyt mały:
+        if (LettersInTitle.length * LettersInTitle[0].offsetHeight <
+            titleBox.offsetHeight - 50) {
+            const style = getComputedStyle(letters[0]);
+            letters.forEach((letter) => {
+                // Set the font size for each element
+                letter.style.fontSize =
+                    parseFloat(style.fontSize.slice(0, -2)) + 1 + "px";
+            });
+        }
+    }
 }
 window.onload = (a) => {
     //always go to first page on reload
@@ -96,6 +126,7 @@ window.addEventListener("resize", () => {
     goToActualPage();
     makeScrollItemsSquare();
     heightScrollBox();
+    TitleLettersSize();
 });
 window.onunload = () => {
     window.removeEventListener("resize", goToActualPage);

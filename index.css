@@ -349,9 +349,9 @@ body {
   align-items: center;
   flex-direction: column;
 }
-.projects__scroll-box__item__title h3 {
+.projects__scroll-box__item__title__letter0, .projects__scroll-box__item__title__letter1, .projects__scroll-box__item__title__letter2, .projects__scroll-box__item__title__letter3 {
   font-weight: 300;
-  font-size: 1.5vw;
+  font-size: 30px;
   color: #1d0bf4;
   text-transform: uppercase;
 }
