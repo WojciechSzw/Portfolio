@@ -71,12 +71,15 @@ function makeScrollItemsSquare() {
 }
 
 function heightScrollBox() {
-  //set also by css(idk why but without it doesnt werk :()
+  //set also by css(idk why but without it doesnt werk :( )
   const scrollBox = document.querySelector<HTMLElement>(
     ".projects__scroll-box"
   );
-  if (scrollBox != undefined) {
-    scrollBox.style.height = "calc(80% - 100px)";
+  const titleHeight =
+    document.querySelector<HTMLElement>(".projects__title")?.offsetHeight;
+  if (scrollBox != undefined && titleHeight != undefined) {
+    scrollBox.style.height = "calc(90% - " + (titleHeight + 100) + "px)";
+    console.log("calc(90% - " + (titleHeight + 100) + "px)");
   }
 }
 
@@ -127,7 +130,7 @@ function TitleLettersSize() {
     const letters = document.querySelectorAll<HTMLElement>(
       `.projects__scroll-box__item__title__letter${x}`
     );
-    //jeżeli tekst jest zbyt duży:
+    //while text is too big:
     while (
       LettersInTitle.length * (LettersInTitle[0] as HTMLElement).offsetHeight >
       titleBox.offsetHeight
@@ -139,7 +142,7 @@ function TitleLettersSize() {
           parseFloat(style.fontSize.slice(0, -2)) - 1 + "px";
       });
     }
-    //jeżeli tekst jest zbyt mały:
+    //if tekst is too small:
     if (
       LettersInTitle.length * (LettersInTitle[0] as HTMLElement).offsetHeight <
       titleBox.offsetHeight - 50
