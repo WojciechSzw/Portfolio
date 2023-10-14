@@ -153,30 +153,31 @@ function replaceItems(direction) {
     const ListItems = [
         {
             id: "cfxpage-project",
-            onclick: null,
+            onclick: "",
             title: "Cfx lab page",
             imgSrc: "images/holdimg0.jpg",
             imgAlt: "cfximage",
         },
         {
             id: "snake-page",
-            onclick() {
-                goToProject("snake.html");
-            },
+            // onclick() {
+            //   goToProject("snake.html");
+            // },
+            onclick: "goToProject('snake.html')",
             title: "Snake game",
             imgSrc: "images/holdimg1.jpg",
             imgAlt: "snakeimg",
         },
         {
             id: "hold-page",
-            onclick: null,
+            onclick: "",
             title: "hold page",
             imgSrc: "images/holdimg2.jpg",
             imgAlt: "holdimg",
         },
         {
             id: "hold-page",
-            onclick: null,
+            onclick: "",
             title: "hold page",
             imgSrc: "images/holdimg3.jpg",
             imgAlt: "holdimg",
@@ -235,7 +236,7 @@ function replaceItems(direction) {
                 break;
             case 1:
                 items[x].id = ListItems[newItemsID.middle].id;
-                items[x].onclick = ListItems[newItemsID.middle].onclick;
+                items[x].setAttribute("onclick", ListItems[newItemsID.middle].onclick);
                 itemsTitlesDivs[x].children[0].innerHTML =
                     ListItems[newItemsID.middle].title;
                 itemsImg[x].src = ListItems[newItemsID.middle].imgSrc;

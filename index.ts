@@ -79,7 +79,6 @@ function heightScrollBox() {
     document.querySelector<HTMLElement>(".projects__title")?.offsetHeight;
   if (scrollBox != undefined && titleHeight != undefined) {
     scrollBox.style.height = "calc(90% - " + (titleHeight + 100) + "px)";
-    console.log("calc(90% - " + (titleHeight + 100) + "px)");
   }
 }
 
