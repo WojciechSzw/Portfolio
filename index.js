@@ -130,9 +130,6 @@ window.onload = (a) => {
     heightScrollBox();
     TitleLettersSize();
 };
-// window.addEventListener("click", function (event) {
-//   TitleLettersSize();
-// });
 window.addEventListener("resize", () => {
     goToActualPage();
     makeScrollItemsSquare();

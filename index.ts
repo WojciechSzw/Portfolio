@@ -175,10 +175,6 @@ window.onload = (a) => {
   TitleLettersSize();
 };
 
-// window.addEventListener("click", function (event) {
-//   TitleLettersSize();
-// });
-
 window.addEventListener("resize", () => {
   goToActualPage();
   makeScrollItemsSquare();

@@ -20,6 +20,10 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="index.css" />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
   </head>
   <body>
     <nav class="navbar">
@@ -155,23 +159,24 @@
               nostrum consequatur? Excepturi.
             </p>
           </div>
-          <div class="contact__box__right-side">
+          <form class="contact__box__right-side" id="form">
             <label for="name" class="contact__box__right-side__label-name"
               >Name</label
             >
             <input
               type="text"
               name="name"
-              id="name"
+              id="form_name"
               class="contact__box__right-side__input-name"
             />
             <label for="email" class="contact__box__right-side__label-email"
               >E-mail</label
             >
             <input
-              type="text"
+              type="email"
+              required
               name="email"
-              id="email"
+              id="form_email"
               class="contact__box__right-side__input-email"
             />
             <label for="message" class="contact__box__right-side__label-message"
@@ -179,12 +184,19 @@
             >
             <textarea
               name="message"
-              id="message"
+              required
+              id="form_message"
               cols="30"
               rows="10"
               class="contact__box__right-side__input-message"
             ></textarea>
-          </div>
+            <input
+              type="submit"
+              value="Send"
+              class="contact__box__right-side__input-send"
+              id="submit_btn"
+            />
+          </form>
         </div>
       </section>
     </div>
@@ -233,5 +245,9 @@
     </script>
     <script src="index.js"></script>
     <script src="imgCarousel.js"></script>
+    <script type="text/javascript" src="emailjs.js"></script>
+    <script type="text/javascript">
+      emailjs.init("BUw36iOBG245-F58Y");
+    </script>
   </body>
 </html>
