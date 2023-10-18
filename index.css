@@ -381,6 +381,9 @@ body {
   transform: scale(1.2);
   z-index: 2;
 }
+.projects__scroll-box__item:nth-child(2):hover {
+  cursor: pointer;
+}
 .projects__scroll-box__item:nth-child(3) {
   position: relative;
   transition: opacity 0.5s;
@@ -405,6 +408,14 @@ body {
   left: 65%;
   top: 4%;
   z-index: -1;
+}
+
+#snake-page > div > h3 {
+  color: red;
+}
+
+#cfxpage-project > div > h3 {
+  color: rgb(64, 199, 100);
 }
 
 .contact {

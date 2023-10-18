@@ -153,19 +153,16 @@ function replaceItems(direction) {
     const ListItems = [
         {
             id: "cfxpage-project",
-            onclick: "",
+            onclick: "window.open('//wojciechszw.github.io/CFXlab-page/')",
             title: "Cfx lab page",
-            imgSrc: "images/holdimg0.jpg",
+            imgSrc: "images/cfxpage.jpg",
             imgAlt: "cfximage",
         },
         {
             id: "snake-page",
-            // onclick() {
-            //   goToProject("snake.html");
-            // },
             onclick: "goToProject('snake.html')",
             title: "Snake game",
-            imgSrc: "images/holdimg1.jpg",
+            imgSrc: "images/snakegame.jpg",
             imgAlt: "snakeimg",
         },
         {

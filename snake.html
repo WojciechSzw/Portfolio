@@ -19,19 +19,70 @@
     />
   </head>
   <body class="background">
-    <nav class="navbar">
+    <nav class="navbar" style="background-color: rgba(35, 35, 35, 0.755)">
       <a href="index.html">Wojciech<b>Szwarc</b></a>
       <div>
-        <a class="navbar-link">about</a>
-        <a class="navbar-link navbar-chosen" href="snake.html">projects</a>
-        <a class="navbar-link">contact</a>
-        <i class="fa-brands fa-square-github fa-xl"></i>
-        <i class="fa-brands fa-linkedin fa-xl"></i>
+        <a class="navbar-link" href="index.html">Go back</a>
       </div>
     </nav>
+    <div class="game-box">
+      <div class="game-box__snake-screen" id="snake-container"></div>
+      <div class="game-box__control-panel">
+        <p class="game-box__control-panel__score" id="score-display">
+          score<br />
+          0
+        </p>
 
-    <p id="score-display">wynik</p>
-    <div id="snake-container"></div>
+        <i
+          onclick="pauseGame()"
+          class="game-box__control-panel__pause-icon fa-solid fa-play fa-3x"
+        ></i>
+        <i
+          onclick="resetGame()"
+          class="game-box__control-panel__reset-icon fa-solid fa-rotate-right fa-3x"
+        ></i>
+        <i
+          class="game-box__control-panel__settings-icon fa-solid fa-gear fa-2x"
+          onclick="openSettings()"
+        ></i>
+      </div>
+    </div>
+    <div class="blur"><p></p></div>
+
+    <div class="horizontal-strap">
+      <div class="horizontal-strap__grid-box">
+        <i
+          onclick="openSettings()"
+          class="horizontal-strap__grid-box__close-icon fa-solid fa-xmark fa-xl"
+        ></i>
+        <label class="horizontal-strap__grid-box__label-speed" for="snakeSpeed"
+          >game tick</label
+        >
+        <input
+          class="horizontal-strap__grid-box__input-speed"
+          type="number"
+          name="snakeSpeed"
+          id=""
+        />
+        <label class="horizontal-strap__grid-box__label-width" for="labelWidth"
+          >map width</label
+        >
+        <input
+          class="horizontal-strap__grid-box__input-width"
+          type="number"
+          min="10"
+          max="100"
+          name="labelWidth"
+          id=""
+        />
+        <button
+          onclick="changeSettings()"
+          class="horizontal-strap__grid-box__saveBtn"
+        >
+          save
+        </button>
+      </div>
+    </div>
   </body>
   <script src="snake.js"></script>
 </html>

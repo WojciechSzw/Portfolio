@@ -3,24 +3,134 @@
   padding: 0;
   border: none;
   text-decoration: none;
-  font-family: monospace;
+  font-family: roboto;
 }
 
-#snake-container {
+.game-box {
+  margin-top: 120px;
+  height: calc(100% - 120px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.game-box__snake-screen {
   position: relative;
-  width: 200px;
-  height: 200px;
-  margin: 10px auto;
   background: rgba(245, 245, 245, 0.43);
 }
-
-#score-display {
-  text-align: center;
-  position: relative;
-  margin: 110px auto 0;
+.game-box__control-panel {
+  background-color: rgba(35, 35, 35, 0.755);
+  justify-content: space-between;
+  padding: 15px 5px;
+  width: 50px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.game-box__control-panel__score {
   color: antiquewhite;
+  text-align: center;
+  text-transform: uppercase;
+}
+.game-box__control-panel > i {
+  color: antiquewhite;
+  transition: all 100ms ease-out;
+}
+.game-box__control-panel > i:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
-.halo {
-  background: black;
+.horizontal-strap {
+  visibility: hidden;
+  width: 100%;
+  height: 250px;
+  background-color: #11171f;
+  position: absolute;
+  top: calc(50% - 120px);
+  left: 50%;
+  z-index: 20;
+  transform: translate(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.horizontal-strap__grid-box {
+  width: 300px;
+  height: 200px;
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr 0.75fr 0.25fr;
+  grid-template-rows: 0.25fr 0.25fr 0.5fr 0.5fr 0.25fr 0.25fr;
+  gap: 0px;
+  place-items: center;
+  grid-template-areas: ". . . closeIcon" ". . . ." "labelSpeed labelSpeed inputSpeed inputSpeed" "labelWidth labelWidth inputWidth inputWidth" ". . . ." "saveBtn saveBtn saveBtn saveBtn";
+}
+.horizontal-strap__grid-box__close-icon {
+  grid-area: closeIcon;
+  color: antiquewhite;
+  transition: all 100ms ease-out;
+}
+.horizontal-strap__grid-box__close-icon:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.horizontal-strap__grid-box__label-speed {
+  text-transform: uppercase;
+  grid-area: labelSpeed;
+  color: antiquewhite;
+  font-size: 20px;
+}
+.horizontal-strap__grid-box__input-speed {
+  grid-area: inputSpeed;
+  width: 100%;
+  background-color: #202b39;
+  color: antiquewhite;
+  padding: 5%;
+  font-size: 20px;
+  box-shadow: -2px 2px #888888;
+}
+.horizontal-strap__grid-box__label-width {
+  text-transform: uppercase;
+  grid-area: labelWidth;
+  color: antiquewhite;
+  font-size: 20px;
+}
+.horizontal-strap__grid-box__input-width {
+  grid-area: inputWidth;
+  width: 100%;
+  background-color: #202b39;
+  color: antiquewhite;
+  padding: 5%;
+  font-size: 20px;
+  box-shadow: -2px 2px #888888;
+}
+.horizontal-strap__grid-box__saveBtn {
+  text-transform: uppercase;
+  grid-area: saveBtn;
+  color: antiquewhite;
+  width: 100px;
+  background-color: #202b39;
+  padding: 2%;
+  font-size: 20px;
+  transition: all 200ms ease-in;
+}
+.horizontal-strap__grid-box__saveBtn:hover {
+  background-color: #0d1217;
+  cursor: pointer;
+  box-shadow: -2px 2px #888888;
+}
+
+.blur {
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.626);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+}
+
+.hide {
+  visibility: visible;
 }/*# sourceMappingURL=snake.css.map */
