@@ -5,6 +5,7 @@ const mainContainer = document.getElementById("main");
 const navbarLink = document.getElementsByClassName("navbar-link");
 const pagesCount = mainContainer?.children.length ?? 0;
 let timeoutID = -1;
+let actualCarouselTitleSize = ["", "", "", ""];
 window.addEventListener("wheel", ScrollFullPage);
 function ScrollFullPage(event) {
     if (wheeling || Math.abs(event.deltaY) < 30)
@@ -96,28 +97,24 @@ function TitleLettersSize() {
         //while text is too big:
         while (LettersInTitle.length * LettersInTitle[0].offsetHeight >
             titleBox.offsetHeight) {
-            console.log("smaller");
             const style = getComputedStyle(letters[0]);
             letters.forEach((letter) => {
                 // Set the font size for each element
                 letter.style.fontSize =
                     parseFloat(style.fontSize.slice(0, -2)) - 1 + "px";
             });
+            actualCarouselTitleSize[x] = style.fontSize;
         }
-        //if tekst is too small:
+        //while text is too small:
         while (LettersInTitle.length * LettersInTitle[0].offsetHeight <
             titleBox.offsetHeight - 50) {
-            console.log("literki: " +
-                LettersInTitle.length *
-                    LettersInTitle[0].offsetHeight +
-                ", box: " +
-                titleBox.offsetHeight);
             const style = getComputedStyle(letters[0]);
             letters.forEach((letter) => {
                 // Set the font size for each element
                 letter.style.fontSize =
                     parseFloat(style.fontSize.slice(0, -2)) + 2 + "px";
             });
+            actualCarouselTitleSize[x] = style.fontSize;
         }
     }
 }

@@ -260,4 +260,10 @@ function replaceItems(direction) {
     actualItemsID.middle = newItemsID.middle;
     actualItemsID.right = newItemsID.right;
     actualItemsID.behind = newItemsID.behind;
+    const parents = document.querySelectorAll(".projects__scroll-box__item__title");
+    for (let x = 0; x < parents.length; x++) {
+        const letters = document.querySelectorAll(`.projects__scroll-box__item__title__letter${x}`);
+        const style = getComputedStyle(letters[0]);
+        actualCarouselTitleSize[x] = style.fontSize;
+    }
 }

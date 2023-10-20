@@ -350,7 +350,7 @@ body {
   flex-direction: column;
 }
 .projects__scroll-box__item__title__letter0, .projects__scroll-box__item__title__letter1, .projects__scroll-box__item__title__letter2, .projects__scroll-box__item__title__letter3 {
-  font-weight: 300;
+  font-weight: 400;
   font-size: 30px;
   color: #1d0bf4;
   text-transform: uppercase;
@@ -408,14 +408,18 @@ body {
   left: 65%;
   top: 4%;
   z-index: -1;
+  transform: scale(0.5);
 }
 
+#snake-page .projects__scroll-box__item__title {
+  background-color: #898989;
+}
 #snake-page > div > h3 {
-  color: red;
+  color: #3b3b3b;
 }
 
 #cfxpage-project > div > h3 {
-  color: rgb(64, 199, 100);
+  color: antiquewhite;
 }
 
 .contact {
