@@ -4,7 +4,6 @@ const mainContainer = document.getElementById("main");
 const navbarLink = document.getElementsByClassName("navbar-link");
 const pagesCount = mainContainer?.children.length ?? 0;
 let timeoutID = -1;
-let actualCarouselTitleSize = ["", "", "", ""];
 
 window.addEventListener("wheel", ScrollFullPage);
 
@@ -136,12 +135,11 @@ function TitleLettersSize() {
       titleBox.offsetHeight
     ) {
       const style = getComputedStyle(letters[0]);
+      const fontSize = parseFloat(style.fontSize.slice(0, -2)) - 1;
       letters.forEach((letter) => {
         // Set the font size for each element
-        letter.style.fontSize =
-          parseFloat(style.fontSize.slice(0, -2)) - 1 + "px";
+        letter.style.fontSize = fontSize + "px";
       });
-      actualCarouselTitleSize[x] = style.fontSize;
     }
     //while text is too small:
     while (
@@ -149,12 +147,11 @@ function TitleLettersSize() {
       titleBox.offsetHeight - 50
     ) {
       const style = getComputedStyle(letters[0]);
+      const fontSize = parseFloat(style.fontSize.slice(0, -2)) + 2;
       letters.forEach((letter) => {
         // Set the font size for each element
-        letter.style.fontSize =
-          parseFloat(style.fontSize.slice(0, -2)) + 2 + "px";
+        letter.style.fontSize = fontSize + "px";
       });
-      actualCarouselTitleSize[x] = style.fontSize;
     }
   }
 }

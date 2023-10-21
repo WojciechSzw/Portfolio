@@ -16,7 +16,7 @@ document.getElementById("form")?.addEventListener("submit", function (event) {
   emailjs.send(serviceID, templateID, params).then(
     () => {
       btn.value = "Send";
-      alert("Sent!");
+      alert("Sent");
       document.querySelector("#form_name").value = "";
       document.querySelector("#form_email").value = "";
       document.querySelector("#form_message").value = "";
