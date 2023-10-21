@@ -89,7 +89,7 @@ function collision() {
       snakeBody[0][0] === snakeBody[x][0] &&
       snakeBody[0][1] === snakeBody[x][1]
     ) {
-      resetGame();
+      deathScreen();
     }
   }
   if (
@@ -98,7 +98,7 @@ function collision() {
     snakeBody[0][1] > GAME_CONTAINER_SIDEWIDTH - 1 ||
     snakeBody[0][1] < 0
   ) {
-    resetGame();
+    deathScreen();
   }
 }
 
@@ -198,9 +198,14 @@ function pauseGame() {
     pauseBtn?.classList.remove("fa-pause");
     pauseBtn?.classList.add("fa-play");
   }
+  console.log(IS_GAME_PAUSED);
 }
 
 function openSettings() {
+  if (!IS_GAME_PAUSED) {
+    pauseGame();
+  }
+
   const horizontalStrap =
     document.querySelector<HTMLElement>(".horizontal-strap");
   const blur = document.querySelector<HTMLElement>(".blur");
@@ -255,6 +260,29 @@ function changeSettings() {
   initMap();
   openSettings();
   resetGame();
+}
+function deathScreen() {
+  const scoreShow = document.querySelector<HTMLElement>(
+    ".death-screen__end-score"
+  );
+  const speedShow = document.querySelector<HTMLElement>(
+    ".death-screen__used-speed"
+  );
+  const widthShow = document.querySelector<HTMLElement>(
+    ".death-screen__used-mapWidth"
+  );
+
+  (scoreShow as HTMLElement).innerHTML = "score: " + score;
+  (speedShow as HTMLElement).innerHTML = "used speed: " + GAME_TICK;
+  (widthShow as HTMLElement).innerHTML =
+    "used map width: " + GAME_CONTAINER_SIDEWIDTH;
+  resetGame();
+  pauseGame();
+
+  const deathScreen = document.querySelector<HTMLElement>(".death-screen");
+  const blur = document.querySelector<HTMLElement>(".blur");
+  deathScreen?.classList.toggle("hide");
+  blur?.classList.toggle("hide");
 }
 
 function resetGame() {

@@ -134,8 +134,55 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 20;
+  z-index: 1;
 }
 .hide {
-  visibility: visible;
+  visibility: visible !important;
+}
+.death-screen {
+  z-index: 2;
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: #202b39;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 200px;
+  display: grid;
+  grid-template-columns: 2.75fr 0.25fr;
+  grid-template-rows: 0.25fr 0.025fr 0.3fr 0.275fr 0.3fr 0.275fr 0.3fr 0.275fr;
+  gap: 0px;
+  place-items: center;
+  grid-template-areas:
+    " . closeIcon"
+    ". ."
+    "score score"
+    ". ."
+    "speed speed"
+    ". ."
+    "width width"
+    ". .";
+  &__close-icon {
+    grid-area: closeIcon;
+    color: antiquewhite;
+    transition: all 100ms ease-out;
+    &:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+  }
+  > p {
+    color: antiquewhite;
+    font-size: 20px;
+  }
+  &__end-score {
+    grid-area: score;
+  }
+  &__used-speed {
+    grid-area: speed;
+  }
+  &__used-mapWidth {
+    grid-area: width;
+  }
 }
