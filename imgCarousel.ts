@@ -190,15 +190,15 @@ function replaceItems(direction: number) {
     {
       id: "hold-page",
       onclick: "",
-      title: "hold page",
-      imgSrc: "images/holdimg2.jpg",
-      imgAlt: "holdimg",
+      title: "FullStack project",
+      imgSrc: "images/fullstackIncoming.jpg",
+      imgAlt: "fullstackProjectImg",
     },
     {
       id: "hold-page",
       onclick: "",
       title: "hold page",
-      imgSrc: "images/holdimg3.jpg",
+      imgSrc: "images/holdimg.jpg",
       imgAlt: "holdimg",
     },
   ];
