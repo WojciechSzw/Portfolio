@@ -154,8 +154,15 @@ function startSpinAnimationTimer() {
 function replaceItems(direction) {
     const ListItems = [
         {
+            id: "weather-app",
+            onclick: "window.open('https://wojciechszw.github.io/WeatherApp/')",
+            title: "Weather app",
+            imgSrc: "images/weatherapp.jpg",
+            imgAlt: "fullstackProjectImg",
+        },
+        {
             id: "cfxpage-project",
-            onclick: "window.open('//wojciechszw.github.io/CFXlab-page/')",
+            onclick: "window.open('http://hubertkarbowiak.com/')",
             title: "Cfx lab page",
             imgSrc: "images/cfxpage.jpg",
             imgAlt: "cfximage",
@@ -170,15 +177,8 @@ function replaceItems(direction) {
         {
             id: "hold-page",
             onclick: "",
-            title: "FullStack project",
-            imgSrc: "images/fullstackIncoming.jpg",
-            imgAlt: "fullstackProjectImg",
-        },
-        {
-            id: "hold-page",
-            onclick: "",
-            title: "hold page",
-            imgSrc: "images/holdimg.jpg",
+            title: "in development",
+            imgSrc: "images/lerningReact.jpg",
             imgAlt: "holdimg",
         },
     ];

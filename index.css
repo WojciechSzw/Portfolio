@@ -352,7 +352,7 @@ body {
 .projects__scroll-box__item__title__letter0, .projects__scroll-box__item__title__letter1, .projects__scroll-box__item__title__letter2, .projects__scroll-box__item__title__letter3 {
   font-weight: 400;
   font-size: 30px;
-  color: #1d0bf4;
+  color: #858490;
   text-transform: uppercase;
 }
 .projects__scroll-box__item img {
@@ -420,6 +420,10 @@ body {
 
 #cfxpage-project > div > h3 {
   color: antiquewhite;
+}
+
+#weather-app > div > h3 {
+  color: #797778;
 }
 
 .contact {

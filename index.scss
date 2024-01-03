@@ -203,7 +203,7 @@ body {
         &__letter3 {
           font-weight: 400;
           font-size: 30px;
-          color: #1d0bf4;
+          color: #858490;
           text-transform: uppercase;
         }
       }
@@ -283,6 +283,11 @@ body {
 #cfxpage-project {
   & > div > h3 {
     color: antiquewhite;
+  }
+}
+#weather-app {
+  & > div > h3 {
+    color: #797778;
   }
 }
 
